@@ -14,6 +14,7 @@ namespace Shri
         SpriteBatch spriteBatch;
         Texture2D txrPlayer;
         Sprite sprPlayer;
+        GameObject objPlayer;
 
         public Shri()
         {
