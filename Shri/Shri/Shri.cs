@@ -12,11 +12,13 @@ namespace Shri
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D sprPlayer;
+        Texture2D txrPlayer;
+        Sprite sprPlayer;
 
         public Shri()
         {
             graphics = new GraphicsDeviceManager(this);
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -36,10 +38,10 @@ namespace Shri
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            sprPlayer = Texture2D.FromStream(GraphicsDevice, File.OpenRead("Content\\bud.png"));
+            txrPlayer = Texture2D.FromStream(GraphicsDevice, File.OpenRead("Content\\bud.png"));
+            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100));
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace Shri
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+
         }
 
         /// <summary>
@@ -58,10 +60,27 @@ namespace Shri
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            var keyboardState = Keyboard.GetState();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            if (keyboardState.IsKeyDown(Keys.W))
+            {
+                sprPlayer.Position.Y -= 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+            }
+            if (keyboardState.IsKeyDown(Keys.A))
+            {
+                sprPlayer.Position.X -= 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+            }
+            if (keyboardState.IsKeyDown(Keys.S))
+            {
+                sprPlayer.Position.Y += 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+            }
+            if (keyboardState.IsKeyDown(Keys.D))
+            {
+                sprPlayer.Position.X += 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+            }
 
             base.Update(gameTime);
         }
@@ -75,7 +94,8 @@ namespace Shri
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
-            spriteBatch.Draw(sprPlayer, Vector2.Zero, Color.White);
+            spriteBatch.Draw(txrPlayer, Vector2.Zero, Color.White);
+            sprPlayer.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
