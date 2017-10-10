@@ -10,16 +10,38 @@ namespace Shri
     /// </summary>
     public class Shri : Game
     {
+        private static Shri instance;
+        public static Shri Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Shri();
+                }
+                return instance;
+            }
+        }
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D txrPlayer;
         Sprite sprPlayer;
-        GameObject objPlayer;
+
+        InputManager inputManager;
+        public InputManager InputManager
+        {
+            get
+            {
+                return inputManager;
+            }
+        }
 
         public Shri()
         {
             graphics = new GraphicsDeviceManager(this);
             IsMouseVisible = true;
+            inputManager = new InputManager();
         }
 
         /// <summary>
@@ -42,7 +64,7 @@ namespace Shri
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             txrPlayer = Texture2D.FromStream(GraphicsDevice, File.OpenRead("Content\\bud.png"));
-            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100));
+            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), true);
         }
 
         /// <summary>
@@ -61,27 +83,19 @@ namespace Shri
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            var keyboardState = Keyboard.GetState();
+            inputManager.Update();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
+            if (inputManager.Pressed(Input.Up, Input.Down))
+            {
+                Shri.Instance.Exit();
+            }
+
+            if (inputManager.Pressed(Input.Back))
+            {
                 Exit();
-
-            if (keyboardState.IsKeyDown(Keys.W))
-            {
-                sprPlayer.Position.Y -= 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
             }
-            if (keyboardState.IsKeyDown(Keys.A))
-            {
-                sprPlayer.Position.X -= 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-            }
-            if (keyboardState.IsKeyDown(Keys.S))
-            {
-                sprPlayer.Position.Y += 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-            }
-            if (keyboardState.IsKeyDown(Keys.D))
-            {
-                sprPlayer.Position.X += 10 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-            }
+            
+            sprPlayer.Update(gameTime);
 
             base.Update(gameTime);
         }
