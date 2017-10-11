@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.IO;
 
 namespace Shri
@@ -22,11 +21,18 @@ namespace Shri
                 return instance;
             }
         }
-
+        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D txrPlayer;
-        Sprite sprPlayer;
+
+        GameScreenManager gameScreenManager;
+        public GameScreenManager GameScreenManager
+        {
+            get
+            {
+                return gameScreenManager;
+            }
+        }
 
         InputManager inputManager;
         public InputManager InputManager
@@ -42,6 +48,7 @@ namespace Shri
             graphics = new GraphicsDeviceManager(this);
             IsMouseVisible = true;
             inputManager = new InputManager();
+            gameScreenManager = new GameScreenManager();
         }
 
         /// <summary>
@@ -53,6 +60,8 @@ namespace Shri
         protected override void Initialize()
         {
             base.Initialize();
+
+            gameScreenManager.Push(new InitialGameScreen());
         }
 
         /// <summary>
@@ -62,9 +71,6 @@ namespace Shri
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            txrPlayer = Texture2D.FromStream(GraphicsDevice, File.OpenRead("Content\\bud.png"));
-            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), true);
         }
 
         /// <summary>
@@ -84,19 +90,9 @@ namespace Shri
         protected override void Update(GameTime gameTime)
         {
             inputManager.Update();
-
-            if (inputManager.Pressed(Input.Up, Input.Down))
-            {
-                Shri.Instance.Exit();
-            }
-
-            if (inputManager.Pressed(Input.Back))
-            {
-                Exit();
-            }
             
-            sprPlayer.Update(gameTime);
-
+            gameScreenManager.Update(gameTime);
+            
             base.Update(gameTime);
         }
 
@@ -107,12 +103,9 @@ namespace Shri
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
-            spriteBatch.Draw(txrPlayer, Vector2.Zero, Color.White);
-            sprPlayer.Draw(spriteBatch);
-            spriteBatch.End();
 
+            gameScreenManager.Draw(spriteBatch);
+            
             base.Draw(gameTime);
         }
     }
