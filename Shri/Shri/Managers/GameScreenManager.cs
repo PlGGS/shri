@@ -47,7 +47,7 @@ namespace Shri
                 if (currentGameScreen.Initialized == false)
                 {
                     currentGameScreen.Initialize();
-                    currentGameScreen.LoadContent(Shri.Instance.GraphicsDevice);
+                    currentGameScreen.LoadContent(Shri.Instance.ContentManager);
                 }
 
                 currentGameScreen.Update(gameTime);

@@ -43,12 +43,23 @@ namespace Shri
             }
         }
 
+
+        ContentManager contentManager;
+        public ContentManager ContentManager
+        {
+            get
+            {
+                return contentManager;
+            }
+        }
+
         public Shri()
         {
             graphics = new GraphicsDeviceManager(this);
             IsMouseVisible = true;
             inputManager = new InputManager();
             gameScreenManager = new GameScreenManager();
+            contentManager = new ContentManager();
         }
 
         /// <summary>
@@ -70,6 +81,7 @@ namespace Shri
         /// </summary>
         protected override void LoadContent()
         {
+            contentManager.Prepare(GraphicsDevice);
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 

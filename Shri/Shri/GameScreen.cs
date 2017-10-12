@@ -33,7 +33,7 @@ namespace Shri
             initialized = true;
         }
 
-        public virtual void LoadContent(GraphicsDevice graphicsDevice)
+        public virtual void LoadContent(ContentManager contentManager)
         {
             
         }

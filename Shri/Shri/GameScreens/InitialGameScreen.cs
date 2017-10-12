@@ -24,11 +24,11 @@ namespace Shri
             base.Initialize();
         }
 
-        public override void LoadContent(GraphicsDevice graphicsDevice)
+        public override void LoadContent(ContentManager contentManager)
         {
-            base.LoadContent(graphicsDevice);
+            base.LoadContent(contentManager);
 
-            txrPlayer = Texture2D.FromStream(graphicsDevice, File.OpenRead("Content\\bud.png"));
+            txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
             sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), true);
         }
 
