@@ -33,7 +33,7 @@ namespace Shri
         {
             bool gameScreenPopped = false;
 
-            while (gameScreenPopped)
+            do
             {
                 gameScreenPopped = false;
 
@@ -58,6 +58,7 @@ namespace Shri
                     gameScreenPopped = true;
                 }
             }
+            while (gameScreenPopped);
         }
 
         public void Draw(SpriteBatch spriteBatch)
