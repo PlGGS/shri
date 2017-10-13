@@ -9,47 +9,47 @@ namespace Shri
     /// </summary>
     public class Shri : Game
     {
-        private static Shri instance;
+        private static Shri _instance;
         public static Shri Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new Shri();
+                    _instance = new Shri();
                 }
-                return instance;
+                return _instance;
             }
         }
         
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        GameScreenManager gameScreenManager;
+        GameScreenManager _gameScreenManager;
         public GameScreenManager GameScreenManager
         {
             get
             {
-                return gameScreenManager;
+                return _gameScreenManager;
             }
         }
 
-        InputManager inputManager;
+        InputManager _inputManager;
         public InputManager InputManager
         {
             get
             {
-                return inputManager;
+                return _inputManager;
             }
         }
 
 
-        ContentManager contentManager;
+        ContentManager _contentManager;
         public ContentManager ContentManager
         {
             get
             {
-                return contentManager;
+                return _contentManager;
             }
         }
 
@@ -57,9 +57,9 @@ namespace Shri
         {
             graphics = new GraphicsDeviceManager(this);
             IsMouseVisible = true;
-            inputManager = new InputManager();
-            gameScreenManager = new GameScreenManager();
-            contentManager = new ContentManager();
+            _inputManager = new InputManager();
+            _gameScreenManager = new GameScreenManager();
+            _contentManager = new ContentManager();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Shri
         {
             base.Initialize();
 
-            gameScreenManager.Push(new InitialGameScreen());
+            _gameScreenManager.Push(new InitialGameScreen());
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Shri
         /// </summary>
         protected override void LoadContent()
         {
-            contentManager.Prepare(GraphicsDevice);
+            _contentManager.Prepare(GraphicsDevice);
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
@@ -101,9 +101,9 @@ namespace Shri
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            inputManager.Update();
-            
-            gameScreenManager.Update(gameTime);
+            _inputManager.Update();
+
+            _gameScreenManager.Update(gameTime);
             
             base.Update(gameTime);
         }
@@ -116,7 +116,7 @@ namespace Shri
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            gameScreenManager.Draw(spriteBatch);
+            _gameScreenManager.Draw(spriteBatch);
             
             base.Draw(gameTime);
         }

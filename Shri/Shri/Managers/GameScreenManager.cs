@@ -10,23 +10,23 @@ namespace Shri
 {
     public class GameScreenManager
     {
-        private Stack<GameScreen> gameScreens;
+        private Stack<GameScreen> _gameScreens;
         public Stack<GameScreen> GameScreens
         {
             get
             {
-                return gameScreens;
+                return _gameScreens;
             }
         }
 
         public GameScreenManager()
         {
-            gameScreens = new Stack<GameScreen>();
+            _gameScreens = new Stack<GameScreen>();
         }
         
         public void Push(GameScreen gameScreen)
         {
-            gameScreens.Push(gameScreen);
+            _gameScreens.Push(gameScreen);
         }
 
         public void Update(GameTime gameTime)
@@ -37,12 +37,12 @@ namespace Shri
             {
                 gameScreenPopped = false;
 
-                if (gameScreens.Count == 0)
+                if (_gameScreens.Count == 0)
                 {
                     Shri.Instance.Exit();
                 }
 
-                GameScreen currentGameScreen = gameScreens.Peek();
+                GameScreen currentGameScreen = _gameScreens.Peek();
 
                 if (currentGameScreen.Initialized == false)
                 {
@@ -63,9 +63,9 @@ namespace Shri
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (gameScreens.Peek().Initialized)
+            if (_gameScreens.Peek().Initialized)
             {
-                gameScreens.Peek().Draw(spriteBatch);
+                _gameScreens.Peek().Draw(spriteBatch);
             }
         }
     }

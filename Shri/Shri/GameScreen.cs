@@ -10,27 +10,27 @@ namespace Shri
 {
     public abstract class GameScreen
     {
-        protected bool initialized;
+        protected bool _initialized;
         public bool Initialized
         {
             get
             {
-                return initialized;
+                return _initialized;
             }
         }
 
-        protected bool quit;
+        protected bool _quit;
         public bool Quit
         {
             get
             {
-                return quit;
+                return _quit;
             }
         }
 
         public virtual void Initialize()
         {
-            initialized = true;
+            _initialized = true;
         }
 
         public virtual void LoadContent(ContentManager contentManager)

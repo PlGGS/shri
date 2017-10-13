@@ -29,7 +29,7 @@ namespace Shri
             base.LoadContent(contentManager);
 
             txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
-            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), true);
+            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), Color.White, true);
         }
 
         public override void Update(GameTime gameTime)
