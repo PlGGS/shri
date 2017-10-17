@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Fonts\medium-font-good.png" />
     <Content Include="Content\Fonts\small-font.png" />
     <Content Include="Content\Sprites\bud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
