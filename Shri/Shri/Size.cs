@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shri
 {
-    class Size
+    public class Size
     {
         public int Height
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shri
 {
-    class Sprite
+    public class Sprite
     {
         protected Vector2 _position;
         public Vector2 Position
@@ -52,6 +52,11 @@ namespace Shri
             _texture = texture;
             _tint = tint;
             _isPlayerControlled = isPlayerControlled;
+        }
+
+        public void SetTint(Color tint)
+        {
+            _tint = tint;
         }
 
         public void Update(GameTime gameTime)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shri
 {
-    class FramedSprite : Sprite
+    public class FramedSprite : Sprite
     {
         int _framesX;
         public int FramesX
