@@ -13,6 +13,9 @@ namespace Shri
     {
         Texture2D txrPlayer;
         Sprite sprPlayer;
+        Texture2D txrMediumFont;
+        FramedSprite sprMediumFont;
+        Font fntMediumFont;
 
         public InitialGameScreen()
         {
@@ -30,6 +33,12 @@ namespace Shri
 
             txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
             sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), Color.White, true);
+
+            txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
+            sprMediumFont = new FramedSprite(0, 0, 0, txrMediumFont, new Vector2(50, 50), Color.White, false);
+            Dictionary<int, int> mapping = contentManager.GetFontMapping("Content\\Fonts\\medium-font.fontmapping");
+
+            fntMediumFont = new Font(sprMediumFont, mapping, 1, 2, Color.Green);
         }
 
         public override void Update(GameTime gameTime)

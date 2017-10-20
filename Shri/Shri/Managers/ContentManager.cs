@@ -58,6 +58,34 @@ namespace Shri
             return texture;
         }
 
+        public Dictionary<int, int> GetFontMapping(string filePath)
+        {
+            Dictionary<int, int> mapping = new Dictionary<int, int>();
+
+            if (File.Exists(filePath))
+            {
+                using (FileStream stream = File.OpenRead(filePath))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        int lineVal = 0;
+
+                        while (reader.EndOfStream == false)
+                        {
+                            string line = reader.ReadLine();
+                            int key = BitConverter.ToInt16(Encoding.Unicode.GetBytes(line), 0);
+
+                            mapping.Add(key, lineVal);
+
+                            lineVal++;
+                        }
+                    }
+                }
+            }
+
+            return mapping;
+        }
+
         public SoundEffect GetSoundEffect(string filePath)
         {
             SoundEffect sfx = null;
