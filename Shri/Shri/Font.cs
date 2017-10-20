@@ -18,14 +18,21 @@ namespace Shri
             }
         }
 
-        Size spacing; //TODO figure out why I can't access Size.cs
+        Size spacing;
 
-        private Dictionary<int, int> mapping;
+        private Dictionary<int, int> _mapping;
+        public Dictionary<int, int> mapping
+        {
+            get
+            {
+                return _mapping;
+            }
+        }
 
         public Font(FramedSprite framedSprite, Dictionary<int, int> mapping, int horizontalCell, int verticalCell, Color fontColor)
         {
-            _sprite = sprite;
-            _sprite.SetCurrentFrame(0);
+            _sprite = framedSprite;
+            _sprite.CurrentFrame = 0;
             _sprite.SetTint(fontColor);
 
             _mapping = mapping;
