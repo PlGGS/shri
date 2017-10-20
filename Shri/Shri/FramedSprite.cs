@@ -59,5 +59,10 @@ namespace Shri
             _borderSize = borderSize;
             _currentFrame = 0;
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+
+        }
     }
 }

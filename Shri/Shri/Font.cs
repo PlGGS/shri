@@ -43,5 +43,10 @@ namespace Shri
                 Width = verticalCell
             };
         }
+
+        public void DrawString(string text, Vector2 position)
+        {
+            //TODO draw text here
+        }
     }
 }

@@ -103,7 +103,7 @@ namespace Shri
             }
         }
         
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, _position, Color.White); //Color.White draws sprite normally (color parameter is color mask)
         }
