@@ -18,10 +18,10 @@ namespace Shri
             }
         }
 
-        Size spacing;
+        Size kerning;
 
         private Dictionary<int, int> _mapping;
-        public Dictionary<int, int> mapping
+        public Dictionary<int, int> Mapping
         {
             get
             {
@@ -37,7 +37,11 @@ namespace Shri
 
             _mapping = mapping;
 
-            //TODO Set spacing here
+            kerning = new Size
+            {
+                Height = horizontalCell,
+                Width = verticalCell
+            };
         }
     }
 }
