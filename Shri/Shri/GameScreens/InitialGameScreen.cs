@@ -60,7 +60,7 @@ namespace Shri
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
             spriteBatch.Draw(txrPlayer, Vector2.Zero, Color.White);
             sprPlayer.Draw(spriteBatch);
-            fntMediumFont.DrawString("Hello, World", new Vector2(50, 50));
+            fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(50, 50));
             spriteBatch.End();
         }
     }

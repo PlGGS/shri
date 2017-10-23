@@ -38,6 +38,13 @@ namespace Shri
         }
 
         Size _frameSize;
+        public Size FrameSize
+        {
+            get
+            {
+                return _frameSize;
+            }
+        }
         
         int _currentFrame;
         public int CurrentFrame
@@ -77,13 +84,18 @@ namespace Shri
             _frameSize = new Size
             {
                 Width = (texture.Width - (FramesX * borderSize) - borderSize) / framesX,
-                Height = (texture.Height - (FramesY * borderSize) - borderSize) / frames
+                Height = (texture.Height - (FramesY * borderSize) - borderSize) / framesY
             };
         }
-        
+
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, _sourceRectangle, _tint);
+            Draw(spriteBatch, _position);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        {
+            spriteBatch.Draw(_texture, position, _sourceRectangle, _tint);
         }
     }
 }

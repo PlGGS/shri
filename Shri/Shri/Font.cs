@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,9 +45,22 @@ namespace Shri
             };
         }
 
-        public void DrawString(string text, Vector2 position)
+        public void DrawString(SpriteBatch spriteBatch, string text, Vector2 position)
         {
-            //TODO draw text here
+            int x = (int)position.X;
+            int y = (int)position.Y;
+
+            foreach (char c in text)
+            {
+                byte[] bytes = Encoding.Unicode.GetBytes(new char[] { c });
+                int key = BitConverter.ToInt16(bytes, 0);
+                int translatedValue = _mapping[key];
+
+                _sprite.CurrentFrame = translatedValue;
+                _sprite.Draw(spriteBatch, new Vector2(x, position.Y));
+
+                x += Sprite.FrameSize.Width + kerning.Width;
+            }
         }
     }
 }

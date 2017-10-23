@@ -63,8 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Fonts\medium-font.png" />
-    <Content Include="Content\Fonts\small-font.png" />
+    <Content Include="Content\Fonts\medium-font.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\small-font.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\bud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -72,8 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
-    <None Include="Content\Fonts\medium-font.fontmapping" />
-    <None Include="Content\Fonts\small-font.fontmapping" />
+    <None Include="Content\Fonts\medium-font.fontmapping">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Fonts\small-font.fontmapping">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
