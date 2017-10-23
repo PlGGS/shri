@@ -57,7 +57,7 @@ namespace Shri
                 int translatedValue = _mapping[key];
 
                 _sprite.CurrentFrame = translatedValue;
-                _sprite.Draw(spriteBatch, new Vector2(x, position.Y));
+                _sprite.Draw(spriteBatch, position);
 
                 x += Sprite.FrameSize.Width + kerning.Width;
             }

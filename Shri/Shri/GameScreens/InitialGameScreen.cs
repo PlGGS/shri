@@ -58,9 +58,9 @@ namespace Shri
             base.Draw(spriteBatch);
 
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
+            fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(0, 0)); //TODO fix this
             spriteBatch.Draw(txrPlayer, Vector2.Zero, Color.White);
             sprPlayer.Draw(spriteBatch);
-            fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(50, 50));
             spriteBatch.End();
         }
     }

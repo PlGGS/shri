@@ -8,27 +8,29 @@ namespace Shri
 {
     public class Size
     {
+        int _height;
         public int Height
         {
             get
             {
-                return Height;
+                return _height;
             }
             set
             {
-                Height = value;
+                _height = value;
             }
         }
 
+        int _width;
         public int Width
         {
             get
             {
-                return Width;
+                return _width;
             }
             set
             {
-                Width = value;
+                _width = value;
             }
         }
     }
