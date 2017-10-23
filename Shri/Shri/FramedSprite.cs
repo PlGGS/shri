@@ -52,17 +52,38 @@ namespace Shri
             }
         }
 
+        Rectangle _sourceRectangle;
+        public Rectangle SourceRectangle
+        {
+            get
+            {
+                int frameX = _currentFrame / _framesX;
+                int frameY = _currentFrame % _framesY;
+                int textureX = BorderSize + ((_borderSize + _frameSize.Width) * frameX);
+                int textureY = BorderSize + ((_borderSize + _frameSize.Height) * frameY);
+
+                _sourceRectangle = new Rectangle(textureX, textureY, _frameSize.Width, _frameSize.Height);
+
+                return _sourceRectangle;
+            }
+        }
+
         public FramedSprite(int framesX, int framesY, int borderSize, Texture2D texture, Vector2 position, Color tint, bool isPlayerControlled) : base(texture, position, tint, isPlayerControlled)
         {
             _framesX = framesX;
             _framesY = framesY;
             _borderSize = borderSize;
             _currentFrame = 0;
+            _frameSize = new Size
+            {
+                Width = (texture.Width - (FramesX * borderSize) - borderSize) / framesX,
+                Height = (texture.Height - (FramesY * borderSize) - borderSize) / frames
+            };
         }
-
+        
         public override void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(_texture, _position, _sourceRectangle, _tint);
         }
     }
 }
