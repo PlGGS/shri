@@ -44,6 +44,7 @@
     <Compile Include="Font.cs" />
     <Compile Include="FramedSprite.cs" />
     <Compile Include="GameScreen.cs" />
+    <Compile Include="GameScreens\Level0.cs" />
     <Compile Include="GameScreens\InitialGameScreen.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Managers\ContentManager.cs" />
@@ -69,7 +70,13 @@
     <Content Include="Content\Fonts\small-font.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\baseLevel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\bud.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\mainMenu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />

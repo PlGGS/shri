@@ -20,31 +20,52 @@ namespace Shri
 
         public InputManager()
         {
-            if (gamePadState.IsConnected)
-            {
-                isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
-            }
-            else
-            {
-                isUsingKeyboard = true;
-            }
-            
             KeyBindingsKeyboard = new Dictionary<Keys, Input>
-            {
-                { Keys.W, Input.Up },
-                { Keys.A, Input.Left },
-                { Keys.S, Input.Down },
-                { Keys.D, Input.Right },
-                { Keys.Escape, Input.Back }
-            };
+                    {
+                        { Keys.W, Input.Up },
+                        { Keys.A, Input.Left },
+                        { Keys.S, Input.Down },
+                        { Keys.D, Input.Right },
+                        { Keys.Escape, Input.Back },
+                        { Keys.Enter, Input.Start },
+                        { Keys.Space, Input.Shoot }
+                    };
             KeyBindingsGamePad = new Dictionary<Buttons, Input>
+                    {
+                        { Buttons.DPadUp, Input.Up },
+                        { Buttons.DPadLeft, Input.Left },
+                        { Buttons.DPadDown, Input.Down },
+                        { Buttons.DPadRight, Input.Right },
+                        { Buttons.Back, Input.Back },
+                        { Buttons.Start, Input.Start },
+                        { Buttons.RightTrigger, Input.Shoot }
+                    };
+
+            switch (Shri.Instance.GameScreenManager.CurrentGameScreen.Name)
             {
-                { Buttons.DPadUp, Input.Up },
-                { Buttons.DPadLeft, Input.Left },
-                { Buttons.DPadDown, Input.Down },
-                { Buttons.DPadRight, Input.Right },
-                { Buttons.Back, Input.Back }
-            };
+
+                case "InitialGameScreen":
+                    if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
+                    {
+                        isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
+                    }
+                    else
+                    {
+                        isUsingKeyboard = true;
+                    }
+                    break;
+
+                case "Level0":
+                    if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
+                    {
+                        isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
+                    }
+                    else
+                    {
+                        isUsingKeyboard = true;
+                    }
+                    break;
+            }
         }
 
         public void Update()

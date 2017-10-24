@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace Shri
 {
-    public class InitialGameScreen : GameScreen
+    public class Level0 : GameScreen
     {
         Texture2D txrPlayer;
         Sprite sprPlayer;
+        Texture2D txrBackground;
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
         Font fntMediumFont;
 
-        public InitialGameScreen()
+        public Level0()
         {
             _name = this.ToString();
         }
@@ -32,7 +33,9 @@ namespace Shri
             base.LoadContent(contentManager);
 
             txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
-            sprPlayer = new Sprite(txrPlayer, new Vector2(100, 100), Color.White, true);
+            sprPlayer = new Sprite(txrPlayer, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2 - txrPlayer.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2 - txrPlayer.Height / 2), Color.White, true);
+
+            txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
 
             txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
             sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
@@ -58,8 +61,9 @@ namespace Shri
             base.Draw(spriteBatch);
 
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
+            
             fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(0, 0)); //TODO fix this
-            spriteBatch.Draw(txrPlayer, Vector2.Zero, Color.White);
+            spriteBatch.Draw(txrBackground, Vector2.Zero, Color.White);
             sprPlayer.Draw(spriteBatch);
             spriteBatch.End();
         }

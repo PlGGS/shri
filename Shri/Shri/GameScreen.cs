@@ -28,6 +28,15 @@ namespace Shri
             }
         }
 
+        protected string _name;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+
         public virtual void Initialize()
         {
             _initialized = true;

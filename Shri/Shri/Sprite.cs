@@ -63,42 +63,55 @@ namespace Shri
         {
             if (IsPlayerControlled)
             {
-                if (Shri.Instance.InputManager.Pressed(Input.Up, Input.Left))
+                switch (Shri.Instance.GameScreenManager.CurrentGameScreen.Name)
                 {
-                    this._position.Y -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                    this._position.X -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
-                if (Shri.Instance.InputManager.Pressed(Input.Up, Input.Right))
-                {
-                    this._position.Y -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                    this._position.X += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
-                if (Shri.Instance.InputManager.Pressed(Input.Down, Input.Left))
-                {
-                    this._position.Y += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                    this._position.X -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
-                if (Shri.Instance.InputManager.Pressed(Input.Down, Input.Right))
-                {
-                    this._position.Y += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                    this._position.X += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
 
-                if (Shri.Instance.InputManager.Pressed(Input.Up))
-                {
-                    this._position.Y -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
-                if (Shri.Instance.InputManager.Pressed(Input.Down))
-                {
-                    this._position.Y += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
-                if (Shri.Instance.InputManager.Pressed(Input.Left))
-                {
-                    this._position.X -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                }
-                if (Shri.Instance.InputManager.Pressed(Input.Right))
-                {
-                    this._position.X += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                    case "InitialGameScreen":
+                        if (Shri.Instance.InputManager.Pressed(Input.Start))
+                        {
+                            //TODO go to level0
+                        }
+                        break;
+
+                    case "Level0": //TODO use this for more than just level0
+                        if (Shri.Instance.InputManager.Pressed(Input.Up, Input.Left))
+                        {
+                            this._position.Y -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                            this._position.X -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Up, Input.Right))
+                        {
+                            this._position.Y -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                            this._position.X += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Down, Input.Left))
+                        {
+                            this._position.Y += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                            this._position.X -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Down, Input.Right))
+                        {
+                            this._position.Y += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                            this._position.X += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+
+                        if (Shri.Instance.InputManager.Pressed(Input.Up))
+                        {
+                            this._position.Y -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Down))
+                        {
+                            this._position.Y += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Left))
+                        {
+                            this._position.X -= 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Right))
+                        {
+                            this._position.X += 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        }
+                        break;
                 }
             }
         }

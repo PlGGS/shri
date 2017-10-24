@@ -72,7 +72,7 @@ namespace Shri
         {
             base.Initialize();
 
-            _gameScreenManager.Push(new InitialGameScreen());
+            _gameScreenManager.Push(new Level0());
         }
 
         /// <summary>

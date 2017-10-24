@@ -13,6 +13,8 @@ namespace Shri
         Left = 2,
         Down = 4,
         Right = 8,
-        Back = 16
+        Back = 16,
+        Start = 32,
+        Shoot = 64
     }
 }
