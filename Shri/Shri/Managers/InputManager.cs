@@ -41,10 +41,10 @@ namespace Shri
                         { Buttons.RightTrigger, Input.Shoot }
                     };
 
-            switch (Shri.Instance.GameScreenManager.CurrentGameScreen.Name)
+            switch (gameScreenManager.CurrentGameScreen.Name) //THIS IS THE PROBLEM
             {
 
-                case "InitialGameScreen":
+                case "InitialGameScreen": //TODO find out whether or not the issue is bc this string isn't correct
                     if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
                     {
                         isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable

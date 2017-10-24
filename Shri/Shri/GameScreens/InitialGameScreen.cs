@@ -15,7 +15,8 @@ namespace Shri
 
         public InitialGameScreen()
         {
-            _name = this.ToString();
+            //_name = this.ToString();
+            _name = "InitialGameScreen";
         }
 
         public override void Initialize()

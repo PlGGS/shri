@@ -20,7 +20,8 @@ namespace Shri
 
         public Level0()
         {
-            _name = this.ToString();
+            //_name = this.ToString();
+            _name = "Level0";
         }
 
         public override void Initialize()

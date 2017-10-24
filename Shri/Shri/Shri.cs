@@ -57,8 +57,8 @@ namespace Shri
         {
             graphics = new GraphicsDeviceManager(this);
             IsMouseVisible = true;
-            _inputManager = new InputManager();
             _gameScreenManager = new GameScreenManager();
+            _inputManager = new InputManager();
             _contentManager = new ContentManager();
         }
 

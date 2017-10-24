@@ -31,7 +31,6 @@ namespace Shri
         public GameScreenManager()
         {
             _gameScreens = new Stack<GameScreen>();
-            _currentGameScreen = GameScreens.Peek();
         }
         
         public void Push(GameScreen gameScreen)
@@ -51,7 +50,9 @@ namespace Shri
                 {
                     Shri.Instance.Exit();
                 }
-                
+
+                _currentGameScreen = GameScreens.Peek();
+
                 if (_currentGameScreen.Initialized == false)
                 {
                     _currentGameScreen.Initialize();
