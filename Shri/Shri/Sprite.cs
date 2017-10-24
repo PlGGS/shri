@@ -113,6 +113,11 @@ namespace Shri
                         }
                         break;
                 }
+
+                if (Shri.Instance.InputManager.Pressed(Input.Back))
+                {
+                    Shri.Instance.Exit();
+                }
             }
         }
         
