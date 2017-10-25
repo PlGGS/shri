@@ -32,8 +32,9 @@ namespace Shri
         {
             base.LoadContent(contentManager);
 
+            float txrScale = 0.2f;
             txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
-            sprPlayer = new Sprite(txrPlayer, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2 - txrPlayer.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2 - txrPlayer.Height / 2), Color.White, true);
+            sprPlayer = new Sprite(txrPlayer, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2 - (txrPlayer.Width * txrScale) / 2, Shri.Instance.Window.ClientBounds.Height / 2 - (txrPlayer.Height * txrScale ) / 2), Color.White, txrScale, true, 100);
 
             txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
 

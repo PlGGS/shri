@@ -75,7 +75,7 @@ namespace Shri
             }
         }
 
-        public FramedSprite(int framesX, int framesY, int borderSize, Texture2D texture, Vector2 position, Color tint, bool isPlayerControlled) : base(texture, position, tint, isPlayerControlled)
+        public FramedSprite(int framesX, int framesY, int borderSize, Texture2D texture, Vector2 position, Color tint, bool isPlayerControlled) : base(texture, position, tint, 1.0f, isPlayerControlled)
         {
             _framesX = framesX;
             _framesY = framesY;
