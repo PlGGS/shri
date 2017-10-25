@@ -65,11 +65,11 @@ namespace Shri
             {
                 switch (Shri.Instance.GameScreenManager.CurrentGameScreen.Name)
                 {
-
                     case "InitialGameScreen":
                         if (Shri.Instance.InputManager.Pressed(Input.Start))
                         {
-                            //TODO go to level0
+                            Shri.Instance.GameScreenManager.GameScreens.Pop();
+                            Shri.Instance.GameScreenManager.Push(new Level0());
                         }
                         break;
 

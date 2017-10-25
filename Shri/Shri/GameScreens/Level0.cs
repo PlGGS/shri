@@ -48,12 +48,7 @@ namespace Shri
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            if (Shri.Instance.InputManager.Pressed(Input.Back))
-            {
-                Shri.Instance.Exit();
-            }
-
+            
             sprPlayer.Update(gameTime);
         }
 
@@ -62,7 +57,6 @@ namespace Shri
             base.Draw(spriteBatch);
 
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
-            
             fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(0, 0)); //TODO fix this
             spriteBatch.Draw(txrBackground, Vector2.Zero, Color.White);
             sprPlayer.Draw(spriteBatch);

@@ -72,7 +72,7 @@ namespace Shri
         {
             base.Initialize();
 
-            _gameScreenManager.Push(new Level0());
+            _gameScreenManager.Push(new MainMenu());
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Shri
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Red);
 
             _gameScreenManager.Draw(spriteBatch);
             

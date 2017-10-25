@@ -26,7 +26,8 @@ namespace Shri
                         { Keys.A, Input.Left },
                         { Keys.S, Input.Down },
                         { Keys.D, Input.Right },
-                        { Keys.Escape, Input.Back },
+                        { Keys.OemTilde, Input.Back },
+                        { Keys.Escape, Input.Start },
                         { Keys.Enter, Input.Start },
                         { Keys.Space, Input.Shoot }
                     };
@@ -41,30 +42,13 @@ namespace Shri
                         { Buttons.RightTrigger, Input.Shoot }
                     };
 
-            switch (gameScreenManager.CurrentGameScreen.Name) //THIS IS THE PROBLEM
+            if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
             {
-
-                case "InitialGameScreen": //TODO find out whether or not the issue is bc this string isn't correct
-                    if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
-                    {
-                        isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
-                    }
-                    else
-                    {
-                        isUsingKeyboard = true;
-                    }
-                    break;
-
-                case "Level0":
-                    if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
-                    {
-                        isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
-                    }
-                    else
-                    {
-                        isUsingKeyboard = true;
-                    }
-                    break;
+                isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
+            }
+            else
+            {
+                isUsingKeyboard = true;
             }
         }
 

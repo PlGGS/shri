@@ -45,7 +45,7 @@
     <Compile Include="FramedSprite.cs" />
     <Compile Include="GameScreen.cs" />
     <Compile Include="GameScreens\Level0.cs" />
-    <Compile Include="GameScreens\InitialGameScreen.cs" />
+    <Compile Include="GameScreens\MainMenu.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Managers\ContentManager.cs" />
     <Compile Include="Managers\GameScreenManager.cs" />
