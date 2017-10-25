@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Shri
 {
-    public class InitialGameScreen : GameScreen
+    public class MainMenu : GameScreen
     {
-        Texture2D txrBackground;
+        Texture2D txrTitle;
+        Sprite sprTitle;
 
-        public InitialGameScreen()
+        public MainMenu()
         {
-            //_name = this.ToString();
-            _name = "InitialGameScreen";
+            _name = "MainMenu";
         }
 
         public override void Initialize()
@@ -28,12 +28,15 @@ namespace Shri
         {
             base.LoadContent(contentManager);
 
-            txrBackground = contentManager.GetTexture("Content\\Sprites\\mainMenu.png");
+            txrTitle = contentManager.GetTexture("Content\\Sprites\\mainMenu.png");
+            sprTitle = new Sprite(txrTitle, Vector2.Zero, Color.White, true);
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            sprTitle.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -41,7 +44,7 @@ namespace Shri
             base.Draw(spriteBatch);
 
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
-            spriteBatch.Draw(txrBackground, Vector2.Zero, Color.White);
+            sprTitle.Draw(spriteBatch);
             spriteBatch.End();
         }
     }

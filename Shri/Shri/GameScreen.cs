@@ -26,6 +26,10 @@ namespace Shri
             {
                 return _quit;
             }
+            set
+            {
+                _quit = value;
+            }
         }
 
         protected string _name;

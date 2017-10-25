@@ -114,7 +114,7 @@ namespace Shri
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(Color.Red); //This makes sure we're not still rendering old screens when we shift to a new one
 
             _gameScreenManager.Draw(spriteBatch);
             

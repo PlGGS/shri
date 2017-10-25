@@ -20,7 +20,6 @@ namespace Shri
 
         public Level0()
         {
-            //_name = this.ToString();
             _name = "Level0";
         }
 
@@ -49,7 +48,7 @@ namespace Shri
         {
             base.Update(gameTime);
             
-            sprPlayer.Update(gameTime);
+            sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
         }
 
         public override void Draw(SpriteBatch spriteBatch)

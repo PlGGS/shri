@@ -65,11 +65,11 @@ namespace Shri
             {
                 switch (Shri.Instance.GameScreenManager.CurrentGameScreen.Name)
                 {
-                    case "InitialGameScreen":
+                    case "MainMenu":
                         if (Shri.Instance.InputManager.Pressed(Input.Start))
                         {
-                            Shri.Instance.GameScreenManager.GameScreens.Pop();
                             Shri.Instance.GameScreenManager.Push(new Level0());
+                            Console.WriteLine("Hello There");
                         }
                         break;
 
