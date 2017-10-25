@@ -29,6 +29,8 @@ namespace Shri
                         { Keys.OemTilde, Input.Back },
                         { Keys.Escape, Input.Start },
                         { Keys.Enter, Input.Start },
+                        { Keys.Up, Input.Grow },
+                        { Keys.Down, Input.Shrink},
                         { Keys.Space, Input.Shoot }
                     };
             KeyBindingsGamePad = new Dictionary<Buttons, Input>
@@ -39,6 +41,8 @@ namespace Shri
                         { Buttons.DPadRight, Input.Right },
                         { Buttons.Back, Input.Back },
                         { Buttons.Start, Input.Start },
+                        { Buttons.B, Input.Grow },
+                        { Buttons.A, Input.Shrink },
                         { Buttons.RightTrigger, Input.Shoot }
                     };
 

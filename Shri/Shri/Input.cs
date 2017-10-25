@@ -15,6 +15,8 @@ namespace Shri
         Right = 8,
         Back = 16,
         Start = 32,
-        Shoot = 64
+        Grow = 64,
+        Shrink = 128,
+        Shoot = 256
     }
 }

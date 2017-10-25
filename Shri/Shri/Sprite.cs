@@ -44,6 +44,19 @@ namespace Shri
             {
                 return _scale;
             }
+            set
+            {
+                _scale = value;
+            }
+        }
+
+        protected Vector2 _origin;
+        public Vector2 Origin
+        {
+            get
+            {
+                return _origin;
+            }
         }
 
         protected bool _isPlayerControlled;
@@ -68,11 +81,12 @@ namespace Shri
             }
         }
 
-        public Sprite(Texture2D texture, Vector2 position, Color tint, float scale = 1.0f, bool isPlayerControlled = false, int speed = 50)
+        public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, float scale = 1.0f, bool isPlayerControlled = false, int speed = 50)
         {
             _position = new Vector2(position.X * scale, position.Y * scale);
             _texture = texture;
             _tint = tint;
+            _origin = origin;
             _scale = new Vector2(scale, scale);
             _isPlayerControlled = isPlayerControlled;
             _speed = speed;
@@ -134,6 +148,15 @@ namespace Shri
                         {
                             this._position.X += _speed * gameTime.ElapsedGameTime.Milliseconds / 1000f;
                         }
+
+                        if (Shri.Instance.InputManager.Pressed(Input.Grow))
+                        {
+                            this.Scale += new Vector2(0.1f, 0.1f);
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Shrink))
+                        {
+                            this.Scale -= new Vector2(0.1f, 0.1f);
+                        }
                         break;
                 }
 
@@ -146,7 +169,7 @@ namespace Shri
         
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, color:Color.White, scale:_scale); //Color.White draws sprite normally (color parameter is color mask)
+            spriteBatch.Draw(_texture, _position, color:Color.White, scale:_scale, origin:_origin); //Color.White draws sprite normally (color parameter is color mask), scale isn't necessary so this line freaks out
         }
 
         internal void Location()
