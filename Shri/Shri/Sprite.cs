@@ -57,6 +57,10 @@ namespace Shri
             {
                 return _origin;
             }
+            set
+            {
+                _origin = value;
+            }
         }
 
         protected bool _isPlayerControlled;
@@ -81,6 +85,24 @@ namespace Shri
             }
         }
 
+        protected int _width;
+        public int Width
+        {
+            get
+            {
+                return _width;
+            }
+        }
+
+        protected int _height;
+        public int Height
+        {
+            get
+            {
+                return _height;
+            }
+        }
+
         public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, float scale = 1.0f, bool isPlayerControlled = false, int speed = 50)
         {
             _position = new Vector2(position.X * scale, position.Y * scale);
@@ -90,6 +112,8 @@ namespace Shri
             _scale = new Vector2(scale, scale);
             _isPlayerControlled = isPlayerControlled;
             _speed = speed;
+            _width = (int)(texture.Width * scale);
+            _height = (int)(texture.Height * scale);
         }
         
         public void SetTint(Color tint)
@@ -151,14 +175,17 @@ namespace Shri
 
                         if (Shri.Instance.InputManager.Pressed(Input.Grow))
                         {
-                            this.Scale += new Vector2(0.1f, 0.1f);
+                            this.Scale += new Vector2(0.01f, 0.01f);
+                            this.Origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
                         }
                         if (Shri.Instance.InputManager.Pressed(Input.Shrink))
                         {
-                            this.Scale -= new Vector2(0.1f, 0.1f);
-                        }
+                            this.Scale -= new Vector2(0.01f, 0.01f);
+                            this.Origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));                        }
                         break;
                 }
+
+                Console.WriteLine(_width);
 
                 if (Shri.Instance.InputManager.Pressed(Input.Back))
                 {
