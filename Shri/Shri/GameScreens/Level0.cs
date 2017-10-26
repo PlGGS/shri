@@ -38,7 +38,7 @@ namespace Shri
                 new Vector2(Shri.Instance.Window.ClientBounds.Width / 2 - (txrPlayer.Width * scale) / 2,
                 Shri.Instance.Window.ClientBounds.Height / 2 - (txrPlayer.Height * scale) / 2),
                 Color.White, new Vector2(((txrPlayer.Width * scale) / 2), ((txrPlayer.Height * scale) / 2)),
-                scale, true, 100);
+                scale, true, 250, 0.5f, 90);
 
             txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
 
