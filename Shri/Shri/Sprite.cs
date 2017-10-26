@@ -224,17 +224,23 @@ namespace Shri
                                 this._position.X += _speed * gameTime.ElapsedGameTime.Milliseconds / 1000f;
                             }
 
-                            if (Shri.Instance.InputManager.Pressed(Input.Grow)) //NOTE Scaling does not use custome origin!!!
+                            if (Shri.Instance.InputManager.Pressed(Input.Grow))
                             {
-                                _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
                                 _scale += new Vector2(0.01f, 0.01f);
+                                if (new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)) == _origin)
+                                    _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
+#if DEBUG
                                 Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
+#endif
                             }
                             if (Shri.Instance.InputManager.Pressed(Input.Shrink))
                             {
-                                _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
                                 _scale -= new Vector2(0.01f, 0.01f);
+                                if (new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)) == _origin)
+                                    _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
+#if DEBUG
                                 Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
+#endif
                             }
                         }
 

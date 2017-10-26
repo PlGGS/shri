@@ -54,7 +54,7 @@ namespace Shri
         {
             base.Update(gameTime);
 
-            Console.WriteLine($"width: {(Shri.Instance.Window.ClientBounds.Width / 2)}");
+            //Console.WriteLine($"width: {(Shri.Instance.Window.ClientBounds.Width / 2)}");
 
             sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
         }
