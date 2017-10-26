@@ -167,6 +167,7 @@ namespace Shri
                         break;
 
                     case "Level0": //TODO use this for more than just level0
+                    //case "Level1": <- That works for selecting multiple cases
                         if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                         {
                             if (Shri.Instance.InputManager.Pressed(Input.Up, Input.Left))
@@ -223,21 +224,27 @@ namespace Shri
                                 this._position.X += _speed * gameTime.ElapsedGameTime.Milliseconds / 1000f;
                             }
 
-                            if (Shri.Instance.InputManager.Pressed(Input.Grow))
+                            if (Shri.Instance.InputManager.Pressed(Input.Grow)) //NOTE Scaling does not use custome origin!!!
                             {
-                                this.Scale += new Vector2(0.01f, 0.01f);
-                                this.Origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
+                                _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
+                                _scale += new Vector2(0.01f, 0.01f);
+                                Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
                             }
                             if (Shri.Instance.InputManager.Pressed(Input.Shrink))
                             {
-                                this.Scale -= new Vector2(0.01f, 0.01f);
-                                this.Origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
+                                _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
+                                _scale -= new Vector2(0.01f, 0.01f);
+                                Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
                             }
                         }
 
                         if (_momentum > 0)
                         {
-                            _momentum -= 0.05f;
+                            _momentum -= 0.05f + (0.5f * (1 - _momentum));
+
+                            if (_momentum < 0)
+                                _momentum = 0;
+
                             switch (_mvmtDirection)
                             {
                                 case 0:

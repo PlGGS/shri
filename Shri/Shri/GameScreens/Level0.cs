@@ -17,6 +17,7 @@ namespace Shri
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
         Font fntMediumFont;
+        float scale;
 
         public Level0()
         {
@@ -32,12 +33,12 @@ namespace Shri
         {
             base.LoadContent(contentManager);
 
-            float scale = 0.2f;
+            scale = 1.0f;
             txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
             sprPlayer = new Sprite(txrPlayer, 
-                new Vector2(Shri.Instance.Window.ClientBounds.Width / 2 - (txrPlayer.Width * scale) / 2,
-                Shri.Instance.Window.ClientBounds.Height / 2 - (txrPlayer.Height * scale) / 2),
-                Color.White, new Vector2(((txrPlayer.Width * scale) / 2), ((txrPlayer.Height * scale) / 2)),
+                new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
+                (Shri.Instance.Window.ClientBounds.Height / 2) - ((txrPlayer.Height * scale) / 2)),
+                Color.White, new Vector2((txrPlayer.Width * scale) / 2, (txrPlayer.Height * scale) / 2),
                 scale, true, 250, 0.5f, 90);
 
             txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
@@ -52,7 +53,9 @@ namespace Shri
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            
+
+            Console.WriteLine($"width: {(Shri.Instance.Window.ClientBounds.Width / 2)}");
+
             sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
         }
 
