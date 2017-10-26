@@ -132,20 +132,19 @@ namespace Shri
             }
         }
 
-        public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, float scale = 1.0f, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
+        public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
         {
-            _position = new Vector2(position.X * scale, position.Y * scale);
+            _position = new Vector2(position.X, position.Y);
             _texture = texture;
             _tint = tint;
-            _origin = origin; //TODO find out if scaling is broken by origin
-            _scale = new Vector2(scale, scale);
+            _origin = origin;
             _isPlayerControlled = isPlayerControlled;
             _speed = speed;
-            _width = (int)(texture.Width * scale); //TODO fix scaling
-            _height = (int)(texture.Height * scale);
+            _width = (int)(texture.Width);
+            _height = (int)(texture.Height);
             _momentum = momentum;
             _mvmtDirection = mvmtDirection;
-            
+            _scale = new Vector2(1.0f, 1.0f);
         }
         
         public void SetTint(Color tint)
@@ -227,8 +226,6 @@ namespace Shri
                             if (Shri.Instance.InputManager.Pressed(Input.Grow))
                             {
                                 _scale += new Vector2(0.01f, 0.01f);
-                                if (new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)) == _origin)
-                                    _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
 #if DEBUG
                                 Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
@@ -236,8 +233,6 @@ namespace Shri
                             if (Shri.Instance.InputManager.Pressed(Input.Shrink))
                             {
                                 _scale -= new Vector2(0.01f, 0.01f);
-                                if (new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)) == _origin)
-                                    _origin = new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2));
 #if DEBUG
                                 Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif

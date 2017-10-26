@@ -32,14 +32,14 @@ namespace Shri
         public override void LoadContent(ContentManager contentManager)
         {
             base.LoadContent(contentManager);
-
-            scale = 1.0f;
+            
             txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
             sprPlayer = new Sprite(txrPlayer, 
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2) - ((txrPlayer.Height * scale) / 2)),
-                Color.White, new Vector2((txrPlayer.Width * scale) / 2, (txrPlayer.Height * scale) / 2),
-                scale, true, 250, 0.5f, 90);
+                (Shri.Instance.Window.ClientBounds.Height / 2 + 200)),
+                Color.White, new Vector2((txrPlayer.Width) / 2, (txrPlayer.Height) / 2), 
+                true, 250, 1.0f, 90);
+            sprPlayer.Scale = new Vector2(0.2f, 0.2f); //Always make sure to set custom scale after instance creation
 
             txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
 

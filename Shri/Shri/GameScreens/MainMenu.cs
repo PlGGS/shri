@@ -29,7 +29,7 @@ namespace Shri
             base.LoadContent(contentManager);
 
             txrTitle = contentManager.GetTexture("Content\\Sprites\\mainMenu.png");
-            sprTitle = new Sprite(txrTitle, Vector2.Zero, Color.White, Vector2.Zero, 1.0f, true, 0);
+            sprTitle = new Sprite(txrTitle, Vector2.Zero, Color.White, Vector2.Zero, true, 0, 1.0f);
         }
 
         public override void Update(GameTime gameTime)
