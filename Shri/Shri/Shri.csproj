@@ -76,6 +76,9 @@
     <Content Include="Content\Sprites\baseLevel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\bud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
