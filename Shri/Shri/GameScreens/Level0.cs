@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Shri.Sprites;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +32,7 @@ namespace Shri
         Sprite sprWallTop;
         Sprite sprWallBottom;
         Sprite sprFill;
-        Sprite sprExit;
+        Sprite sprExit; //TODO create individual Sprite classes if necessary
 
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
@@ -51,20 +52,20 @@ namespace Shri
         {
             base.LoadContent(contentManager);
             
-            txrPlayer = contentManager.GetTexture("Content\\Sprites\\bud.png");
-            sprPlayer = new Sprite(txrPlayer,
+            txrPlayer = contentManager.GetTexture("Content\\Images\\bud.png");
+            sprPlayer = new SprPlayer(txrPlayer,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 200)),
+                (Shri.Instance.Window.ClientBounds.Height / 2 + 170)),
                 Color.White, new Vector2((txrPlayer.Width) / 2, (txrPlayer.Height) / 2),
                 true, 250, 1.0f, 90)
             {
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
 
-            txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
-            txrBlack = contentManager.GetTexture("Content\\Sprites\\black.png");
-            txrWhite = contentManager.GetTexture("Content\\Sprites\\white.png");
-            txrFill = contentManager.GetTexture("Content\\Sprites\\fill.png");
+            txrBackground = contentManager.GetTexture("Content\\Images\\baseLevel.png");
+            txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
+            txrWhite = contentManager.GetTexture("Content\\Images\\white.png");
+            txrFill = contentManager.GetTexture("Content\\Images\\fill.png");
 
             sprWallLeft = new Sprite(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
