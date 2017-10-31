@@ -12,15 +12,27 @@ namespace Shri
     public class Level0 : GameScreen
     {
         Texture2D txrPlayer;
-        Sprite sprPlayer;
         Texture2D txrBackground;
         Texture2D txrBlack;
+        Texture2D txrWhite;
+        Texture2D txrFill;
+
+        Sprite sprPlayer;
+        protected List<Sprite> _walls = new List<Sprite>();
+        public List<Sprite> Walls
+        {
+            get
+            {
+                return _walls;
+            }
+        }
         Sprite sprWallLeft;
         Sprite sprWallRight;
         Sprite sprWallTop;
         Sprite sprWallBottom;
-        Texture2D txrWhite;
+        Sprite sprFill;
         Sprite sprExit;
+
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
         Font fntMediumFont;
@@ -52,7 +64,7 @@ namespace Shri
             txrBackground = contentManager.GetTexture("Content\\Sprites\\baseLevel.png");
             txrBlack = contentManager.GetTexture("Content\\Sprites\\black.png");
             txrWhite = contentManager.GetTexture("Content\\Sprites\\white.png");
-
+            txrFill = contentManager.GetTexture("Content\\Sprites\\fill.png");
 
             sprWallLeft = new Sprite(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
@@ -70,10 +82,19 @@ namespace Shri
             {
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };
+            sprFill = new Sprite(txrFill, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), Color.White, new Vector2(txrFill.Width / 2, txrFill.Height / 2))
+            {
+                Scale = new Vector2(0.1f, 0.1f) //Always make sure to set custom scale after instance creation
+            };
             sprExit = new Sprite(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
-            }; //TODO possibly make a List of walls
+            };
+
+            _walls.Add(sprWallLeft);
+            _walls.Add(sprWallRight);
+            _walls.Add(sprWallTop);
+            _walls.Add(sprWallBottom);
 
             txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
             sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
@@ -98,11 +119,12 @@ namespace Shri
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
             fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(100, 100)); //TODO fix this
             //spriteBatch.Draw(txrBackground, Vector2.Zero, Color.White);
+            sprFill.Draw(spriteBatch);
             sprPlayer.Draw(spriteBatch);
-            sprWallLeft.Draw(spriteBatch);
-            sprWallRight.Draw(spriteBatch);
-            sprWallTop.Draw(spriteBatch);
-            sprWallBottom.Draw(spriteBatch);
+            foreach (Sprite wall in _walls)
+            {
+                wall.Draw(spriteBatch);
+            }
             sprExit.Draw(spriteBatch);
             spriteBatch.End();
         }

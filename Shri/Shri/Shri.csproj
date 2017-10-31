@@ -82,6 +82,9 @@
     <Content Include="Content\Sprites\bud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\mainMenu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
