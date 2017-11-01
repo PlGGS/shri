@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Shri.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -150,7 +151,9 @@ namespace Shri
         {
             get
             {
-                _bounds = new Rectangle((int)_position.X, (int)_position.Y, _width * (int)_scale.X, _height * (int)_scale.Y);
+                _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
+                //if (this is SprFill)
+                    //Console.WriteLine(new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y)).ToString());
                 return _bounds;
             }
         }
@@ -168,7 +171,7 @@ namespace Shri
             _momentum = momentum;
             _mvmtDirection = mvmtDirection;
             _scale = new Vector2(1.0f, 1.0f);
-            _bounds = new Rectangle((int)_position.X, (int)_position.Y, _width * (int)_scale.X, _height * (int)_scale.Y);
+            _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
         }
         
         public void SetTint(Color tint)

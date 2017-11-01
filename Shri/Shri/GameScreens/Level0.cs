@@ -62,7 +62,6 @@ namespace Shri
             {
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
-            Console.WriteLine($"{sprPlayer.ToString()} {(new Rectangle((int)sprPlayer.Position.X, (int)sprPlayer.Position.Y, sprPlayer.Width * (int)sprPlayer.Scale.X, sprPlayer.Height * (int)sprPlayer.Scale.Y).ToString())}"); //TODO truncate width and height rather than casting to ints making the scale 0
 
             txrBackground = contentManager.GetTexture("Content\\Images\\baseLevel.png");
             txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
