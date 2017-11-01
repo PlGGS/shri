@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Shri.Sprites;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ namespace Shri
             base.LoadContent(contentManager);
 
             txrTitle = contentManager.GetTexture("Content\\Images\\mainMenu.png");
-            sprTitle = new Sprite(txrTitle, Vector2.Zero, Color.White, Vector2.Zero, true, 0, 1.0f);
+            sprTitle = new SprTitle(txrTitle, Vector2.Zero, Color.White, Vector2.Zero, true, 0, 1.0f);
         }
 
         public override void Update(GameTime gameTime)

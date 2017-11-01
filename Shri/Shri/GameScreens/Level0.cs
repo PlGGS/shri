@@ -32,7 +32,8 @@ namespace Shri
         Sprite sprWallTop;
         Sprite sprWallBottom;
         Sprite sprFill;
-        Sprite sprExit; //TODO create individual Sprite classes if necessary
+        Sprite sprEntrance;
+        Sprite sprExit; //TODO create individual Sprite classes for fill and exit
 
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
@@ -83,11 +84,15 @@ namespace Shri
             {
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };
-            sprFill = new Sprite(txrFill, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), Color.White, new Vector2(txrFill.Width / 2, txrFill.Height / 2))
+            sprFill = new SprFill(txrFill, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), Color.White, new Vector2(txrFill.Width / 2, txrFill.Height / 2))
             {
                 Scale = new Vector2(0.1f, 0.1f) //Always make sure to set custom scale after instance creation
             };
-            sprExit = new Sprite(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
+            sprExit = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
+            {
+                Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
+            };
+            sprEntrance = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
             };

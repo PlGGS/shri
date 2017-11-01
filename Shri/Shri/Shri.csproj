@@ -58,7 +58,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="Sprites\SprEntrance.cs" />
+    <Compile Include="Sprites\SprExit.cs" />
+    <Compile Include="Sprites\SprFill.cs" />
     <Compile Include="Sprites\SprPlayer.cs" />
+    <Compile Include="Sprites\SprTitle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
