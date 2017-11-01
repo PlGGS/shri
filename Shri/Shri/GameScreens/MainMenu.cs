@@ -17,7 +17,7 @@ namespace Shri
 
         public MainMenu()
         {
-            _name = "MainMenu";
+            
         }
 
         public override void Initialize()

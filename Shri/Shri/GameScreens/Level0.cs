@@ -41,7 +41,7 @@ namespace Shri
 
         public Level0()
         {
-            _name = "Level0";
+            
         }
 
         public override void Initialize()

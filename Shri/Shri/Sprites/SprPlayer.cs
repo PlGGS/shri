@@ -149,28 +149,17 @@ namespace Shri.Sprites
                 //use this pattern for later levels
             }*/
 
-            if (IsPlayerControlled)
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
-                switch (Shri.Instance.GameScreenManager.CurrentGameScreen.Name)
-                {
-                    case "MainMenu":
-                        
-                        break;
 
-                    case "Level0": //TODO use this for more than just level0
-                                   //case "Level1": <- That works for selecting multiple cases
-                        
-                        break;
-                }
-
-                if (Shri.Instance.InputManager.Pressed(Input.Back))
+            }/*else if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level1)
                 {
-                    Shri.Instance.Exit();
-                }
-            }
-            else
+                    //use this pattern for later levels
+                }*/
+
+            if (Shri.Instance.InputManager.Pressed(Input.Back))
             {
-                //switch
+                Shri.Instance.Exit();
             }
         }
     }
