@@ -21,6 +21,13 @@ namespace Shri.Sprites
         {
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
+                Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+
+                if (this.Bounds.Intersects(currentGameScreen.sprFill.Bounds))
+                {
+                    Console.WriteLine(this.Bounds.ToString());
+                }
+                
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {
                     if (_locked == false)

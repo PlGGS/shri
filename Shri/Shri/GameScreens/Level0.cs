@@ -18,7 +18,7 @@ namespace Shri
         Texture2D txrWhite;
         Texture2D txrFill;
 
-        Sprite sprPlayer;
+        public Sprite sprPlayer;
         protected List<Sprite> _walls = new List<Sprite>();
         public List<Sprite> Walls
         {
@@ -27,13 +27,13 @@ namespace Shri
                 return _walls;
             }
         }
-        Sprite sprWallLeft;
-        Sprite sprWallRight;
-        Sprite sprWallTop;
-        Sprite sprWallBottom;
-        Sprite sprFill;
-        Sprite sprEntrance;
-        Sprite sprExit; //TODO create individual Sprite classes for fill and exit
+        public Sprite sprWallLeft;
+        public Sprite sprWallRight;
+        public Sprite sprWallTop;
+        public Sprite sprWallBottom;
+        public Sprite sprFill;
+        public Sprite sprEntrance;
+        public Sprite sprExit; //TODO create individual Sprite classes for fill and exit
 
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
@@ -62,6 +62,7 @@ namespace Shri
             {
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
+            Console.WriteLine($"{sprPlayer.ToString()} {(new Rectangle((int)sprPlayer.Position.X, (int)sprPlayer.Position.Y, sprPlayer.Width * (int)sprPlayer.Scale.X, sprPlayer.Height * (int)sprPlayer.Scale.Y).ToString())}"); //TODO truncate width and height rather than casting to ints making the scale 0
 
             txrBackground = contentManager.GetTexture("Content\\Images\\baseLevel.png");
             txrBlack = contentManager.GetTexture("Content\\Images\\black.png");

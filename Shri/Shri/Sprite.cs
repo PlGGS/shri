@@ -124,7 +124,6 @@ namespace Shri
         /// Stores the sprite's current direction of momentum (Int32 values 0-360)
         /// </summary>
         protected int _mvmtDirection;
-
         public int MvmtDirection
         {
             get
@@ -145,7 +144,17 @@ namespace Shri
                 _locked = value;
             }
         }
-        
+
+        protected Rectangle _bounds;
+        public Rectangle Bounds
+        {
+            get
+            {
+                _bounds = new Rectangle((int)_position.X, (int)_position.Y, _width * (int)_scale.X, _height * (int)_scale.Y);
+                return _bounds;
+            }
+        }
+
         public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
         {
             _position = new Vector2(position.X, position.Y);
@@ -159,6 +168,7 @@ namespace Shri
             _momentum = momentum;
             _mvmtDirection = mvmtDirection;
             _scale = new Vector2(1.0f, 1.0f);
+            _bounds = new Rectangle((int)_position.X, (int)_position.Y, _width * (int)_scale.X, _height * (int)_scale.Y);
         }
         
         public void SetTint(Color tint)
