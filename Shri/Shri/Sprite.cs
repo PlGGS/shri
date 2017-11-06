@@ -19,6 +19,10 @@ namespace Shri
             {
                 return _position;
             }
+            set
+            {
+                _position = value;
+            }
         }
 
         protected Texture2D _texture;
@@ -152,8 +156,8 @@ namespace Shri
             get
             {
                 _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
-                //if (this is SprFill)
-                    //Console.WriteLine(new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y)).ToString());
+                if (this is SprFill)
+                    Console.WriteLine((int)Position.Y);
                 return _bounds;
             }
         }
@@ -171,7 +175,7 @@ namespace Shri
             _momentum = momentum;
             _mvmtDirection = mvmtDirection;
             _scale = new Vector2(1.0f, 1.0f);
-            _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
+            _bounds = new Rectangle((int)_position.X - (int)Origin.X, (int)_position.Y - (int)Origin.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
         }
         
         public void SetTint(Color tint)

@@ -10,15 +10,83 @@ namespace Shri.Sprites
 {
     public class SprFill : Sprite
     {
-        public SprFill(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
-            : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
-        {
+        private int holdTimer;
 
+        protected bool _filled;
+        public bool Filled
+        {
+            get
+            {
+                return _filled;
+            }
+            set
+            {
+                _filled = value;
+            }
+        }
+
+        protected bool _holdPlayer;
+        public bool HoldPlayer
+        {
+            get
+            {
+                return _holdPlayer;
+            }
+            set
+            {
+                _holdPlayer = value;
+            }
+        }
+
+        /// <summary>
+        /// Sets time before becoming unfilled again. 0 if infinite
+        /// </summary>
+        protected int _timer;
+        public int Timer
+        {
+            get
+            {
+                return _timer;
+            }
+            set
+            {
+                _timer = value;
+            }
+        }
+
+        public SprFill(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0, int timer = 0)
+            : base(texture, position, tint, origin, isPlayerControlled, speed,  momentum, mvmtDirection)
+        {
+            _timer = timer;
         }
 
         public override void Update(GameTime gameTime)
         {
-            //TODO move movement and player specific code here
+            if (_holdPlayer) //set _holdPlayer
+            {
+                if (holdTimer == 0)
+                {
+                    //play satisfying sound
+                }
+
+                if (holdTimer < 30)
+                {
+                    holdTimer += 1;
+                }
+                else
+                {
+                    _holdPlayer = false;
+                    holdTimer = 0;
+                    _filled = true;
+                }
+            }
+
+            if (_filled)
+            {
+                //TODO set filled texture
+                _holdPlayer = true;
+            }
+
         }
     }
 }

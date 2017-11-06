@@ -11,7 +11,6 @@ namespace Shri.Sprites
 {
     public class SprPlayer : Sprite
     {
-        //int i = 0;
 
         public SprPlayer(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
             : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
@@ -24,11 +23,6 @@ namespace Shri.Sprites
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
                 Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
-
-                if (this.Bounds.Intersects(currentGameScreen.sprFill.Bounds))
-                {
-                    //Console.WriteLine(i++);
-                }
                 
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {
