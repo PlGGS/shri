@@ -62,8 +62,8 @@ namespace Shri.Sprites
 
         public override void Update(GameTime gameTime)
         {
-            if (_holdPlayer) //set _holdPlayer
-            {
+            if (_holdPlayer) //TODO set _holdPlayer
+            {                //TODO set color parameter for fill objects
                 if (holdTimer == 0)
                 {
                     //play satisfying sound

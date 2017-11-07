@@ -31,7 +31,7 @@ namespace Shri
         public Sprite sprWallRight;
         public Sprite sprWallTop;
         public Sprite sprWallBottom;
-        public Sprite sprFill;
+        public SprFill sprFill;
         public Sprite sprEntrance;
         public Sprite sprExit; //TODO create individual Sprite classes for fill and exit
 
