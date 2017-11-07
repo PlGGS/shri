@@ -78,18 +78,21 @@
     <Content Include="Content\Fonts\small-font.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Images\baseLevel.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Images\black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Images\bud.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\budBlue.png" />
+    <Content Include="Content\Images\budRed.png" />
+    <Content Include="Content\Images\budYellow.png" />
     <Content Include="Content\Images\fill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\fillBlue.png" />
+    <Content Include="Content\Images\fillRed.png" />
+    <Content Include="Content\Images\fillYellow.png" />
     <Content Include="Content\Images\mainMenu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
