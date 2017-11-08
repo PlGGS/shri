@@ -38,6 +38,19 @@ namespace Shri.Sprites
             }
         }
 
+        protected Color _color;
+        public Color Color
+        {
+            get
+            {
+                return _color;
+            }
+            set
+            {
+                _color = value;
+            }
+        }
+
         /// <summary>
         /// Sets time before becoming unfilled again. 0 if infinite
         /// </summary>
@@ -54,10 +67,11 @@ namespace Shri.Sprites
             }
         }
 
-        public SprFill(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0, int timer = 0)
+        public SprFill(Texture2D texture, Vector2 position, Color tint, Vector2 origin, Color color, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0, int timer = 0)
             : base(texture, position, tint, origin, isPlayerControlled, speed,  momentum, mvmtDirection)
         {
             _timer = timer;
+            _color = color;
         }
 
         public override void Update(GameTime gameTime)
@@ -65,17 +79,37 @@ namespace Shri.Sprites
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
                 Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
-                
-                Console.WriteLine(_filled);
 
-                if (_holdPlayer) //TODO set _holdPlayer
-                {                //TODO set color parameter for fill objects
+                if (_filled == false)
+                {
+                    if (currentGameScreen.sprPlayer.Scale.X >= _scale.X - 0.03 &&
+                        currentGameScreen.sprPlayer.Scale.X <= _scale.X + 0.03)
+                    {
+                        if (currentGameScreen.sprPlayer.Color == _color)
+                        {
+                            if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                            {
+                                Console.WriteLine($"this: {_scale.X} | fill: {currentGameScreen.sprFill.Scale.X}");
+                                _holdPlayer = true;
+                            }
+                        }
+                        else
+                        {
+                            //TODO play sad sound
+                        }
+                    }
+                }
+
+                if (_holdPlayer) //TODO set color parameter for fill objects
+                {
+                    currentGameScreen.sprPlayer.Position = _position;
+                    
                     if (holdTimer == 0)
                     {
                         //play satisfying sound
                     }
 
-                    if (holdTimer < 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f)
+                    if (holdTimer < 3000 * gameTime.ElapsedGameTime.Milliseconds / 1000f)
                     {
                         holdTimer += 1;
                         currentGameScreen.sprPlayer.Locked = true;

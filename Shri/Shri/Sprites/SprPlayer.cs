@@ -11,8 +11,20 @@ namespace Shri.Sprites
 {
     public class SprPlayer : Sprite
     {
+        protected Color _color;
+        public Color Color
+        {
+            get
+            {
+                return _color;
+            }
+            set
+            {
+                _color = value;
+            }
+        }
 
-        public SprPlayer(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
+        public SprPlayer(Texture2D texture, Vector2 position, Color tint, Vector2 origin, Color color, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
             : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
         {
 
@@ -23,15 +35,6 @@ namespace Shri.Sprites
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
                 Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
-
-                if (currentGameScreen.sprFill.Filled == false)
-                {
-                    if (this.Bounds.Intersects(currentGameScreen.sprFill.Bounds))
-                    {
-                        currentGameScreen.sprFill.HoldPlayer = true; //TODO fix this so it doesnt reset as soon as SprFill resets it to false
-                    }
-                }
-                
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {
                     if (_locked == false)
@@ -96,7 +99,7 @@ namespace Shri.Sprites
                             if (_scale.X > 0.8f)
                                 _scale = new Vector2(0.8f, 0.8f);
 #if DEBUG
-                            Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
+                            //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
                         if (Shri.Instance.InputManager.Pressed(Input.Shrink))
@@ -105,7 +108,7 @@ namespace Shri.Sprites
                             if (_scale.X < 0.1f)
                                 _scale = new Vector2(0.1f, 0.1f);
 #if DEBUG
-                            Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
+                            //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
 
@@ -148,10 +151,22 @@ namespace Shri.Sprites
                                     break;
                             }
                         }
-                    }
-                    else
-                    {
 
+                        if (Shri.Instance.InputManager.Pressed(Input.Blue))
+                        {
+                            _texture = currentGameScreen.txrPlayerBlue;
+                            _color = Color.Blue;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Yellow))
+                        {
+                            _texture = currentGameScreen.txrPlayerYellow;
+                            _color = Color.Yellow;
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Red))
+                        {
+                            _texture = currentGameScreen.txrPlayerRed;
+                            _color = Color.Red;
+                        }
                     }
                 }
             }
@@ -159,18 +174,10 @@ namespace Shri.Sprites
             {
                 //use this pattern for later levels
             }*/
-
-            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
-            {
-
-            }/*else if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level1)
-                {
-                    //use this pattern for later levels
-                }*/
-
+            
             if (Shri.Instance.InputManager.Pressed(Input.Back))
             {
-                Shri.Instance.Exit();
+                Shri.Instance.Exit(); //TODO find out why exit crashes the game rather than seemlessly closing it
             }
         }
     }

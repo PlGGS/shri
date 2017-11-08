@@ -17,6 +17,9 @@ namespace Shri
         Start = 32,
         Grow = 64,
         Shrink = 128,
-        Shoot = 256
+        Blue = 256,
+        Yellow = 512,
+        Red = 1024,
+        Shoot = 2048
     }
 }

@@ -160,8 +160,6 @@ namespace Shri
             get
             {
                 _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
-                if (this is SprFill)
-                    Console.WriteLine((int)Position.Y);
                 return _bounds;
             }
         }

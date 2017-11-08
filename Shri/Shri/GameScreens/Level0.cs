@@ -12,12 +12,17 @@ namespace Shri
 {
     public class Level0 : GameScreen
     {
-        Texture2D txrPlayer;
-        Texture2D txrBlack;
-        Texture2D txrWhite;
-        Texture2D txrFill;
+        public Texture2D txrPlayerBlue;
+        public Texture2D txrPlayerYellow;
+        public Texture2D txrPlayerRed;
+        public Texture2D txrFillBlue;
+        public Texture2D txrFillYellow;
+        public Texture2D txrFillRed;
+        public Texture2D txrFilled;
+        public Texture2D txrBlack;
+        public Texture2D txrWhite;
 
-        public Sprite sprPlayer;
+        public SprPlayer sprPlayer;
         protected List<Sprite> _walls = new List<Sprite>();
         public List<Sprite> Walls
         {
@@ -52,19 +57,25 @@ namespace Shri
         {
             base.LoadContent(contentManager);
             
-            txrPlayer = contentManager.GetTexture("Content\\Images\\bud.png");
-            sprPlayer = new SprPlayer(txrPlayer,
+            txrPlayerBlue = contentManager.GetTexture("Content\\Images\\budBlue.png");
+            txrPlayerYellow = contentManager.GetTexture("Content\\Images\\budYellow.png");
+            txrPlayerRed = contentManager.GetTexture("Content\\Images\\budRed.png");
+
+            sprPlayer = new SprPlayer(txrPlayerBlue,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
                 (Shri.Instance.Window.ClientBounds.Height / 2 + 170)),
-                Color.White, new Vector2((txrPlayer.Width) / 2, (txrPlayer.Height) / 2),
-                true, 250, 1.0f, 90)
+                Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
+                Color.Blue, true, 250, 1.0f, 90)
             {
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
             
             txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
             txrWhite = contentManager.GetTexture("Content\\Images\\white.png");
-            txrFill = contentManager.GetTexture("Content\\Images\\fill.png");
+            txrFillBlue = contentManager.GetTexture("Content\\Images\\fillBlue.png");
+            txrFillYellow = contentManager.GetTexture("Content\\Images\\fillYellow.png");
+            txrFillRed = contentManager.GetTexture("Content\\Images\\fillRed.png");
+            txrFilled = contentManager.GetTexture("Content\\Images\\filled.png");
 
             sprWallLeft = new Sprite(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
@@ -82,10 +93,12 @@ namespace Shri
             {
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };
-            sprFill = new SprFill(txrFill, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), Color.White, new Vector2(txrFill.Width / 2, txrFill.Height / 2))
+
+            sprFill = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
             {
                 Scale = new Vector2(0.1f, 0.1f) //Always make sure to set custom scale after instance creation
             };
+
             sprExit = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
@@ -93,7 +106,7 @@ namespace Shri
             sprEntrance = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
-            };
+            }; //TODO play sound as entrance closes behind you
 
             _walls.Add(sprWallLeft);
             _walls.Add(sprWallRight);
@@ -126,21 +139,22 @@ namespace Shri
 
             if (sprFill.Filled == false)
             {
-                sprFill.Texture = txrFill;
+                sprFill.Texture = txrFillRed;
                 sprFill.Draw(spriteBatch);
             }
             else
             {
-                sprFill.Texture = txrPlayer;
+                sprFill.Texture = txrFilled;
                 sprFill.Draw(spriteBatch);
             }
 
-            sprPlayer.Draw(spriteBatch);
             foreach (Sprite wall in _walls)
             {
                 wall.Draw(spriteBatch);
             }
-            sprExit.Draw(spriteBatch);
+            sprExit.Draw(spriteBatch); //TODO draw exit and play sound when player fills fill
+            sprPlayer.Draw(spriteBatch);
+            
             spriteBatch.End();
         }
     }

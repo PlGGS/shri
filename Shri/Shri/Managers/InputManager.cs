@@ -31,6 +31,9 @@ namespace Shri
                         { Keys.Enter, Input.Start },
                         { Keys.Up, Input.Grow },
                         { Keys.Down, Input.Shrink},
+                        { Keys.D1, Input.Blue},
+                        { Keys.D2, Input.Yellow},
+                        { Keys.D3, Input.Red},
                         { Keys.Space, Input.Shoot }
                     };
             KeyBindingsGamePad = new Dictionary<Buttons, Input>
@@ -41,9 +44,14 @@ namespace Shri
                         { Buttons.DPadRight, Input.Right },
                         { Buttons.Back, Input.Back },
                         { Buttons.Start, Input.Start },
-                        { Buttons.B, Input.Grow },
-                        { Buttons.A, Input.Shrink },
-                        { Buttons.RightTrigger, Input.Shoot }
+                        { Buttons.RightTrigger, Input.Grow },
+                        { Buttons.RightShoulder, Input.Grow },
+                        { Buttons.LeftTrigger, Input.Shrink },
+                        { Buttons.LeftShoulder, Input.Shrink },
+                        { Buttons.X, Input.Blue },
+                        { Buttons.Y, Input.Yellow },
+                        { Buttons.B, Input.Red },
+                        { Buttons.A, Input.Shoot }
                     };
 
             if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
