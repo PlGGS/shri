@@ -148,11 +148,16 @@ namespace Shri
                 sprFill.Draw(spriteBatch);
             }
 
-            foreach (Sprite wall in _walls)
+            foreach (Sprite wall in _walls) //TODO wall collision detection
             {
-                wall.Draw(spriteBatch);
+                wall.Draw(spriteBatch); //TODO create base wall object for easier collision detection
             }
-            sprExit.Draw(spriteBatch); //TODO draw exit and play sound when player fills fill
+
+            if (sprFill.Filled)
+            {
+                sprExit.Draw(spriteBatch); //TODO play sound when player fills fill
+            }
+
             sprPlayer.Draw(spriteBatch);
             
             spriteBatch.End();
