@@ -13,7 +13,6 @@ namespace Shri
     public class Level0 : GameScreen
     {
         Texture2D txrPlayer;
-        Texture2D txrBackground;
         Texture2D txrBlack;
         Texture2D txrWhite;
         Texture2D txrFill;
@@ -62,8 +61,7 @@ namespace Shri
             {
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
-
-            txrBackground = contentManager.GetTexture("Content\\Images\\baseLevel.png");
+            
             txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
             txrWhite = contentManager.GetTexture("Content\\Images\\white.png");
             txrFill = contentManager.GetTexture("Content\\Images\\fill.png");
@@ -116,6 +114,7 @@ namespace Shri
             //Console.WriteLine($"width: {(Shri.Instance.Window.ClientBounds.Width / 2)}");
 
             sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
+            sprFill.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -124,8 +123,18 @@ namespace Shri
 
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap);
             fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(100, 100)); //TODO fix this
-            //spriteBatch.Draw(txrBackground, Vector2.Zero, Color.White);
-            sprFill.Draw(spriteBatch);
+
+            if (sprFill.Filled == false)
+            {
+                sprFill.Texture = txrFill;
+                sprFill.Draw(spriteBatch);
+            }
+            else
+            {
+                sprFill.Texture = txrPlayer;
+                sprFill.Draw(spriteBatch);
+            }
+
             sprPlayer.Draw(spriteBatch);
             foreach (Sprite wall in _walls)
             {

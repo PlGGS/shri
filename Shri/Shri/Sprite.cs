@@ -32,6 +32,10 @@ namespace Shri
             {
                 return _texture;
             }
+            set
+            {
+                _texture = value;
+            }
         }
 
         protected Color _tint;

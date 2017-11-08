@@ -62,31 +62,33 @@ namespace Shri.Sprites
 
         public override void Update(GameTime gameTime)
         {
-            if (_holdPlayer) //TODO set _holdPlayer
-            {                //TODO set color parameter for fill objects
-                if (holdTimer == 0)
-                {
-                    //play satisfying sound
-                }
-
-                if (holdTimer < 30)
-                {
-                    holdTimer += 1;
-                }
-                else
-                {
-                    _holdPlayer = false;
-                    holdTimer = 0;
-                    _filled = true;
-                }
-            }
-
-            if (_filled)
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
-                //TODO set filled texture
-                _holdPlayer = true;
-            }
+                Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+                
+                Console.WriteLine(_filled);
 
+                if (_holdPlayer) //TODO set _holdPlayer
+                {                //TODO set color parameter for fill objects
+                    if (holdTimer == 0)
+                    {
+                        //play satisfying sound
+                    }
+
+                    if (holdTimer < 30 * gameTime.ElapsedGameTime.Milliseconds / 1000f)
+                    {
+                        holdTimer += 1;
+                        currentGameScreen.sprPlayer.Locked = true;
+                    }
+                    else
+                    {
+                        currentGameScreen.sprPlayer.Locked = false;
+                        _holdPlayer = false;
+                        holdTimer = 0;
+                        _filled = true;
+                    }
+                }
+            }
         }
     }
 }

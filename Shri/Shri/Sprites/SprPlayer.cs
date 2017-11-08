@@ -24,11 +24,14 @@ namespace Shri.Sprites
             {
                 Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
 
-                if (this.Bounds.Intersects(currentGameScreen.sprFill.Bounds))
+                if (currentGameScreen.sprFill.Filled == false)
                 {
-                    currentGameScreen.sprFill.HoldPlayer = true; //TODO fix this so it doesnt reset as soon as SprFill resets it to false
+                    if (this.Bounds.Intersects(currentGameScreen.sprFill.Bounds))
+                    {
+                        currentGameScreen.sprFill.HoldPlayer = true; //TODO fix this so it doesnt reset as soon as SprFill resets it to false
+                    }
                 }
-
+                
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {
                     if (_locked == false)
