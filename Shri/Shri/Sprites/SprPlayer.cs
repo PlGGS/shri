@@ -194,6 +194,8 @@ namespace Shri.Sprites
             {
                 Shri.Instance.Exit(); //TODO find out why exit crashes the game rather than seemlessly closing it
             }
+
+            _circle.Center = Position;
         }
     }
 }

@@ -139,6 +139,8 @@ namespace Shri.Sprites
                     }
                 }
             }
+
+            _circle.Center = Position; //TODO remove if I never end up moving fill objects
         }
     }
 }
