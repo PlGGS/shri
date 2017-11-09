@@ -46,20 +46,19 @@ namespace Shri
             return ((point - _center).Length() <= _radius);
         }
 
-        public bool Intersects(Circle other)
+        public bool Intersects(Circle other) //TODO finish circular collision detection
         {
-            return ((other.Center - Center).Length() < (other.Radius - Radius));
+            return ((other.Center - _center).Length() < (other.Radius - _radius));
         }
 
         public bool Intersects(Rectangle rectangle)
         {
             Vector2 v = new Vector2(MathHelper.Clamp(Center.X, rectangle.Left, rectangle.Right),
                                     MathHelper.Clamp(Center.Y, rectangle.Top, rectangle.Bottom));
-
             Vector2 direction = Center - v;
             float distanceSquared = direction.LengthSquared();
 
-            return ((distanceSquared > 0) && (distanceSquared < Radius * Radius));
+            return ((distanceSquared > 0) && (distanceSquared < _radius * _radius));
         }
     }
 }

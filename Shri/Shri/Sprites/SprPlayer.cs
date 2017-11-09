@@ -41,8 +41,8 @@ namespace Shri.Sprites
             : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
         {
             _circle = circle;
-            _circle.Center = origin;
-            _circle.Radius = texture.Width / 2;
+            _circle.Center = circle.Center;
+            _circle.Radius = circle.Radius;
         }
 
         public override void Update(GameTime gameTime)

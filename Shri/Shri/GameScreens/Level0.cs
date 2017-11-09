@@ -64,6 +64,7 @@ namespace Shri
             sprPlayer = new SprPlayer(txrPlayerBlue,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
                 (Shri.Instance.Window.ClientBounds.Height / 2 + 170)),
+                new Circle(new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2), txrPlayerBlue.Width / 2),
                 Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
                 Color.Blue, true, 250, 1.0f, 90)
             {
@@ -94,7 +95,7 @@ namespace Shri
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };
 
-            sprFill = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
+            sprFill = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), new Circle(new Vector2((txrFillBlue.Width) / 2, (txrFillBlue.Height) / 2), txrPlayerBlue.Width / 2), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
             {
                 Scale = new Vector2(0.1f, 0.1f) //Always make sure to set custom scale after instance creation
             };
@@ -159,7 +160,7 @@ namespace Shri
             }
 
             sprPlayer.Draw(spriteBatch);
-            
+
             spriteBatch.End();
         }
     }

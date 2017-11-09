@@ -160,6 +160,7 @@ namespace Shri
             get
             {
                 _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
+                _bounds = new Rectangle(new Point(_bounds.X - _bounds.Width / 2, _bounds.Y - _bounds.Height / 2), new Point(_bounds.Width, _bounds.Height));
                 return _bounds;
             }
         }

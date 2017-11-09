@@ -86,8 +86,8 @@ namespace Shri.Sprites
             _timer = timer;
             _color = color;
             _circle = circle;
-            _circle.Center = origin;
-            _circle.Radius = texture.Width / 2;
+            _circle.Center = circle.Center;
+            _circle.Radius = circle.Radius;
         }
 
         public override void Update(GameTime gameTime)
@@ -103,7 +103,7 @@ namespace Shri.Sprites
                     {
                         if (currentGameScreen.sprPlayer.Color == _color)
                         {
-                            if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                            if (this.Circle.Intersects(currentGameScreen.sprPlayer.Circle))
                             {
                                 Console.WriteLine($"this: {_scale.X} | fill: {currentGameScreen.sprFill.Scale.X}");
                                 _holdPlayer = true;
