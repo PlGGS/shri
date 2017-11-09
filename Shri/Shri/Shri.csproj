@@ -44,6 +44,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Circle.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FramedSprite.cs" />
     <Compile Include="GameScreen.cs" />

@@ -24,10 +24,25 @@ namespace Shri.Sprites
             }
         }
 
-        public SprPlayer(Texture2D texture, Vector2 position, Color tint, Vector2 origin, Color color, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
+        protected Circle _circle;
+        public Circle Circle
+        {
+            get
+            {
+                return _circle;
+            }
+            set
+            {
+                _circle = value;
+            }
+        }
+
+        public SprPlayer(Texture2D texture, Vector2 position, Circle circle, Color tint, Vector2 origin, Color color, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
             : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
         {
-
+            _circle = circle;
+            _circle.Center = origin;
+            _circle.Radius = texture.Width / 2;
         }
 
         public override void Update(GameTime gameTime)
