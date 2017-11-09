@@ -23,21 +23,21 @@ namespace Shri
         public Texture2D txrWhite;
 
         public SprPlayer sprPlayer;
-        protected List<Sprite> _walls = new List<Sprite>();
-        public List<Sprite> Walls
+        protected List<SprWall> _walls = new List<SprWall>();
+        public List<SprWall> Walls
         {
             get
             {
                 return _walls;
             }
         }
-        public Sprite sprWallLeft;
-        public Sprite sprWallRight;
-        public Sprite sprWallTop;
-        public Sprite sprWallBottom;
+        public SprWall sprWallLeft;
+        public SprWall sprWallRight;
+        public SprWall sprWallTop;
+        public SprWall sprWallBottom;
         public SprFill sprFill;
         public Sprite sprEntrance;
-        public Sprite sprExit; //TODO create individual Sprite classes for fill and exit
+        public Sprite sprExit;
 
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
@@ -77,19 +77,19 @@ namespace Shri
             txrFillRed = contentManager.GetTexture("Content\\Images\\fillRed.png");
             txrFilled = contentManager.GetTexture("Content\\Images\\filled.png");
 
-            sprWallLeft = new Sprite(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
+            sprWallLeft = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
                 Scale = new Vector2(1f, 48f) //Always make sure to set custom scale after instance creation
             };
-            sprWallRight = new Sprite(txrBlack, new Vector2(Shri.Instance.Window.ClientBounds.Width - txrBlack.Width, 0), Color.Black, Vector2.Zero)
+            sprWallRight = new SprWall(txrBlack, new Vector2(Shri.Instance.Window.ClientBounds.Width - txrBlack.Width, 0), Color.Black, Vector2.Zero)
             {
                 Scale = new Vector2(1f, 48f) //Always make sure to set custom scale after instance creation
             };
-            sprWallTop = new Sprite(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
+            sprWallTop = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };
-            sprWallBottom = new Sprite(txrBlack, new Vector2(0, Shri.Instance.Window.ClientBounds.Height - txrBlack.Height), Color.Black, Vector2.Zero)
+            sprWallBottom = new SprWall(txrBlack, new Vector2(0, Shri.Instance.Window.ClientBounds.Height - txrBlack.Height), Color.Black, Vector2.Zero)
             {
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };

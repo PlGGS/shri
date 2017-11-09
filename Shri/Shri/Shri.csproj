@@ -60,6 +60,7 @@
     <Compile Include="Sprite.cs" />
     <Compile Include="Sprites\SprEntrance.cs" />
     <Compile Include="Sprites\SprExit.cs" />
+    <Compile Include="Sprites\SprWall.cs" />
     <Compile Include="Sprites\SprFill.cs" />
     <Compile Include="Sprites\SprPlayer.cs" />
     <Compile Include="Sprites\SprTitle.cs" />
@@ -68,6 +69,7 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
