@@ -71,7 +71,8 @@ namespace Shri
             {
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
-            
+            sprPlayer.Circle.Radius = sprPlayer.Circle.Radius * sprPlayer.Scale.X;
+
             txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
             txrWhite = contentManager.GetTexture("Content\\Images\\white.png");
             txrFillBlue = contentManager.GetTexture("Content\\Images\\fillBlue.png");
@@ -96,10 +97,11 @@ namespace Shri
                 Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
             };
 
-            sprFill = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), txrPlayerBlue.Width / 2), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
+            sprFill = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), (txrPlayerBlue.Width / 2)), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
             {
-                Scale = new Vector2(0.1f, 0.1f) //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(0.1f, 0.1f), //Always make sure to set custom scale after instance creation
             };
+            sprFill.Circle.Radius = sprFill.Circle.Radius * sprFill.Scale.X;
 
             sprExit = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {

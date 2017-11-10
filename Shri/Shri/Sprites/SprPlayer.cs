@@ -110,18 +110,26 @@ namespace Shri.Sprites
 
                         if (Shri.Instance.InputManager.Pressed(Input.Grow))
                         {
+                            float tmpScale = _scale.X;
+
                             _scale += new Vector2(0.01f, 0.01f);
                             if (_scale.X > 0.8f)
                                 _scale = new Vector2(0.8f, 0.8f);
+
+                            _circle.Radius = _texture.Width / 2 * _scale.X;
 #if DEBUG
                             //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
                         if (Shri.Instance.InputManager.Pressed(Input.Shrink))
                         {
+                            float tmpScale = _scale.X;
+
                             _scale -= new Vector2(0.01f, 0.01f);
                             if (_scale.X < 0.1f)
                                 _scale = new Vector2(0.1f, 0.1f);
+
+                            _circle.Radius = _texture.Width / 2 * _scale.X;
 #if DEBUG
                             //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif

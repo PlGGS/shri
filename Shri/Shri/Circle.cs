@@ -48,7 +48,8 @@ namespace Shri
 
         public bool Intersects(Circle other) //TODO finish circular collision detection
         {
-            return ((other.Center - _center).Length() < (other.Radius - _radius));
+            Console.WriteLine($"distance: {(Math.Sqrt(Math.Pow((other.Center.X - _center.X), 2) + Math.Pow((other.Center.Y - _center.Y), 2)))} | {other.Radius + _radius}");
+            return (Math.Sqrt(Math.Pow((other.Center.X - _center.X), 2) + Math.Pow((other.Center.Y - _center.Y), 2))) < (other.Radius + _radius);
         }
 
         public bool Intersects(Rectangle rectangle)

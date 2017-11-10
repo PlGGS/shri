@@ -105,13 +105,12 @@ namespace Shri.Sprites
                         {
                             if (this.Circle.Intersects(currentGameScreen.sprPlayer.Circle))
                             {
-                                Console.WriteLine($"this: {_scale.X} | fill: {currentGameScreen.sprFill.Scale.X}");
                                 _holdPlayer = true;
                             }
-                        }
-                        else
-                        {
-                            //TODO play sad sound
+                            else
+                            {
+                                //TODO play sad sound
+                            }
                         }
                     }
                 }
