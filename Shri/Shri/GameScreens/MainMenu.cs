@@ -31,6 +31,7 @@ namespace Shri
 
             txrTitle = contentManager.GetTexture("Content\\Images\\mainMenu.png");
             sprTitle = new SprTitle(txrTitle, Vector2.Zero, Color.White, Vector2.Zero, true, 0, 1.0f);
+            Shri.Instance.SoundManager.PlaySound("Music");
         }
 
         public override void Update(GameTime gameTime)
