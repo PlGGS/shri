@@ -98,30 +98,28 @@ namespace Shri.Sprites
 
                 if (_filled == false)
                 {
-                    if (currentGameScreen.sprPlayer.Scale.X >= _scale.X - 0.03 &&
-                        currentGameScreen.sprPlayer.Scale.X <= _scale.X + 0.03)
+                    if (this.Circle.Intersects(currentGameScreen.sprPlayer.Circle))
                     {
-                        if (currentGameScreen.sprPlayer.Color == _color)
+                        if (currentGameScreen.sprPlayer.Scale.X >= _scale.X - 0.03 &&
+                        currentGameScreen.sprPlayer.Scale.X <= _scale.X + 0.03 &&
+                        currentGameScreen.sprPlayer.Color == _color)
                         {
-                            if (this.Circle.Intersects(currentGameScreen.sprPlayer.Circle))
-                            {
-                                _holdPlayer = true;
-                            }
-                            else
-                            {
-                                //TODO play sad sound
-                            }
+                            _holdPlayer = true;
+                        }
+                        else
+                        {
+                            Shri.Instance.SoundManager.PlaySound("NoFill");
                         }
                     }
                 }
 
-                if (_holdPlayer) //TODO set color parameter for fill objects
+                if (_holdPlayer)
                 {
                     currentGameScreen.sprPlayer.Position = _position;
-                    
+
                     if (holdTimer == 0)
                     {
-                        //play satisfying sound
+                        Shri.Instance.SoundManager.PlaySound("Fill");
                     }
 
                     if (holdTimer < 3000 * gameTime.ElapsedGameTime.Milliseconds / 1000f)

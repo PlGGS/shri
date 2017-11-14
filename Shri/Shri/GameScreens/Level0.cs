@@ -159,7 +159,8 @@ namespace Shri
 
             if (sprFill.Filled)
             {
-                sprExit.Draw(spriteBatch); //TODO play sound when player fills fill
+                sprExit.Draw(spriteBatch); //TODO make doors their own object type for detecting whether or not they're open or closed
+                Shri.Instance.SoundManager.PlaySound("Open");
             }
 
             sprPlayer.Draw(spriteBatch);

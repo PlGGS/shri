@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Shri.Managers;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Shri
@@ -53,6 +55,15 @@ namespace Shri
             }
         }
 
+        SoundManager _soundManager;
+        public SoundManager SoundManager
+        {
+            get
+            {
+                return _soundManager;
+            }
+        }
+
         public Shri()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -60,6 +71,13 @@ namespace Shri
             _gameScreenManager = new GameScreenManager();
             _inputManager = new InputManager();
             _contentManager = new ContentManager();
+            _soundManager = new SoundManager(new List<SoundFX>
+            {
+                new SoundFX {Key = "Fill", FileName = "Content\\Audio\\fill.wav", DefaultPitch = 1, DefaultVolume = 1},
+                new SoundFX {Key = "NoFill", FileName = "Content\\Audio\\noFill.wav", DefaultPitch = 1, DefaultVolume = 1},
+                new SoundFX {Key = "Open", FileName = "Content\\Audio\\open.wav", DefaultPitch = 1, DefaultVolume = 1},
+                new SoundFX {Key = "Music", FileName = "Content\\Audio\\music.wav", DefaultPitch = 1, DefaultVolume = 1}
+            });
         }
 
         /// <summary>
@@ -83,6 +101,7 @@ namespace Shri
         {
             _contentManager.Prepare(GraphicsDevice);
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            _soundManager.LoadContent(ContentManager);
         }
 
         /// <summary>
