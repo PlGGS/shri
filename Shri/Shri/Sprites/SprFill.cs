@@ -133,6 +133,7 @@ namespace Shri.Sprites
                         _holdPlayer = false;
                         holdTimer = 0;
                         _filled = true;
+                        currentGameScreen.sprExit.Open = true;
                     }
                 }
             }

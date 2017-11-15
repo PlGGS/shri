@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Circle.cs" />
+    <Compile Include="Door.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FramedSprite.cs" />
     <Compile Include="GameScreen.cs" />
@@ -77,6 +78,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Audio\close.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Audio\fill.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

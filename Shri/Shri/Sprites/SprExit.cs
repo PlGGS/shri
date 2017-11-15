@@ -8,17 +8,29 @@ using System.Threading.Tasks;
 
 namespace Shri.Sprites
 {
-    public class SprExit : Sprite
+    public class SprExit : Door
     {
-        public SprExit(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
-            : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
+        public SprExit(bool open, Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
+            : base(open, texture, position, tint, origin, isPlayerControlled, speed, momentum, mvmtDirection)
         {
 
         }
 
         public override void Update(GameTime gameTime)
         {
-            //TODO enter bounds check here
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
+            {
+                Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+
+                if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                {
+                    if (this.Open)
+                    {
+                        //TODO go to next level
+                        Shri.Instance.SoundManager.PlaySound("Fill");
+                    }
+                }
+            }
         }
     }
 }

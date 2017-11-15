@@ -36,8 +36,8 @@ namespace Shri
         public SprWall sprWallTop;
         public SprWall sprWallBottom;
         public SprFill sprFill;
-        public Sprite sprEntrance;
-        public Sprite sprExit;
+        public SprEntrance sprEntrance;
+        public SprExit sprExit;
 
         Texture2D txrMediumFont;
         FramedSprite sprMediumFont;
@@ -60,10 +60,16 @@ namespace Shri
             txrPlayerBlue = contentManager.GetTexture("Content\\Images\\budBlue.png");
             txrPlayerYellow = contentManager.GetTexture("Content\\Images\\budYellow.png");
             txrPlayerRed = contentManager.GetTexture("Content\\Images\\budRed.png");
+            txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
+            txrWhite = contentManager.GetTexture("Content\\Images\\white.png");
+            txrFillBlue = contentManager.GetTexture("Content\\Images\\fillBlue.png");
+            txrFillYellow = contentManager.GetTexture("Content\\Images\\fillYellow.png");
+            txrFillRed = contentManager.GetTexture("Content\\Images\\fillRed.png");
+            txrFilled = contentManager.GetTexture("Content\\Images\\filled.png");
 
             sprPlayer = new SprPlayer(txrPlayerBlue,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 170)),
+                (Shri.Instance.Window.ClientBounds.Height / 2 + 160)),
                 new Circle(new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
                 (Shri.Instance.Window.ClientBounds.Height / 2 + 170)), txrPlayerBlue.Width / 2),
                 Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
@@ -72,13 +78,6 @@ namespace Shri
                 Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
             };
             sprPlayer.Circle.Radius = sprPlayer.Circle.Radius * sprPlayer.Scale.X;
-
-            txrBlack = contentManager.GetTexture("Content\\Images\\black.png");
-            txrWhite = contentManager.GetTexture("Content\\Images\\white.png");
-            txrFillBlue = contentManager.GetTexture("Content\\Images\\fillBlue.png");
-            txrFillYellow = contentManager.GetTexture("Content\\Images\\fillYellow.png");
-            txrFillRed = contentManager.GetTexture("Content\\Images\\fillRed.png");
-            txrFilled = contentManager.GetTexture("Content\\Images\\filled.png");
 
             sprWallLeft = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
@@ -103,11 +102,11 @@ namespace Shri
             };
             sprFill.Circle.Radius = sprFill.Circle.Radius * sprFill.Scale.X;
 
-            sprExit = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
+            sprExit = new SprExit(false, txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
             };
-            sprEntrance = new SprExit(txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
+            sprEntrance = new SprEntrance(true, txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height - txrWhite.Height), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
             }; //TODO play sound as entrance closes behind you
@@ -132,6 +131,9 @@ namespace Shri
 
             sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
             sprFill.Update(gameTime);
+            sprEntrance.Update(gameTime);
+            sprExit.Update(gameTime);
+            //TODO call wall updates when I begin checking for wall collision
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -157,10 +159,14 @@ namespace Shri
                 wall.Draw(spriteBatch); //TODO create base wall object for easier collision detection
             }
 
-            if (sprFill.Filled)
+            if (sprExit.Open)
             {
                 sprExit.Draw(spriteBatch); //TODO make doors their own object type for detecting whether or not they're open or closed
-                Shri.Instance.SoundManager.PlaySound("Open");
+            }
+
+            if (sprEntrance.Open)
+            {
+                sprEntrance.Draw(spriteBatch); //TODO make doors their own object type for detecting whether or not they're open or closed
             }
 
             sprPlayer.Draw(spriteBatch);

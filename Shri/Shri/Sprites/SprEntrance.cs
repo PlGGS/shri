@@ -8,17 +8,37 @@ using System.Threading.Tasks;
 
 namespace Shri.Sprites
 {
-    public class SprEntrance : Sprite
+    public class SprEntrance : Door
     {
-        public SprEntrance(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
-            : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
+        int closeSoundCounter = 0;
+
+        public SprEntrance(bool open, Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
+            : base(open, texture, position, tint, origin, isPlayerControlled, speed, momentum, mvmtDirection)
         {
 
         }
 
         public override void Update(GameTime gameTime)
         {
-            //TODO exit bounds detection here
+            if (closeSoundCounter >= 100)
+            {
+                closeSoundCounter = -1;
+
+                if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
+                {
+                    Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+
+                    if (!this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                    {
+                        this.Open = false;
+                        Shri.Instance.SoundManager.PlaySound("Close");
+                    }
+                }
+            }
+            else if (closeSoundCounter != -1)
+            {
+                closeSoundCounter++;
+            }
         }
     }
 }
