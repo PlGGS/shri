@@ -108,7 +108,7 @@ namespace Shri.Sprites
                         }
                         else
                         {
-                            Shri.Instance.SoundManager.PlaySound("NoFill");
+                            Shri.Instance.SoundManager.PlaySound("NoFill"); //TODO only play if just intersected with player
                         }
                     }
                 }

@@ -50,6 +50,9 @@ namespace Shri.Sprites
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
                 Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+
+                Console.WriteLine(_momentum);
+
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {
                     if (_locked == false)
@@ -134,47 +137,7 @@ namespace Shri.Sprites
                             //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
-
-                        if (_momentum > 0)
-                        {
-                            _momentum -= 0.05f + (0.5f * (1 - _momentum));
-
-                            if (_momentum < 0)
-                                _momentum = 0;
-
-                            switch (_mvmtDirection)
-                            {
-                                case 0:
-                                    this._position.X += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 45:
-                                    this._position.X += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    this._position.Y -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 90:
-                                    this._position.Y -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 135:
-                                    this._position.X -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    this._position.Y -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 180:
-                                    this._position.X -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 225:
-                                    this._position.X -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    this._position.Y += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 270:
-                                    this._position.Y += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                                case 315:
-                                    this._position.X += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    this._position.Y += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                                    break;
-                            }
-                        }
-
+                        
                         if (Shri.Instance.InputManager.Pressed(Input.Blue))
                         {
                             _texture = currentGameScreen.txrPlayerBlue;
@@ -197,7 +160,47 @@ namespace Shri.Sprites
             {
                 //use this pattern for later levels
             }*/
-            
+
+            if (_momentum > 0)
+            {
+                _momentum -= 0.05f + (0.5f * (1 - _momentum));
+
+                if (_momentum < 0)
+                    _momentum = 0;
+
+                switch (_mvmtDirection)
+                {
+                    case 0:
+                        this._position.X += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 45:
+                        this._position.X += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        this._position.Y -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 90:
+                        this._position.Y -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 135:
+                        this._position.X -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        this._position.Y -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 180:
+                        this._position.X -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 225:
+                        this._position.X -= (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        this._position.Y += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 270:
+                        this._position.Y += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                    case 315:
+                        this._position.X += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        this._position.Y += (_speed * _momentum) * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+                        break;
+                }
+            }
+
             if (Shri.Instance.InputManager.Pressed(Input.Back))
             {
                 Shri.Instance.Exit(); //TODO find out why exit crashes the game rather than seemlessly closing it

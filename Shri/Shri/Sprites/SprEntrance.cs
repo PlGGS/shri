@@ -20,7 +20,7 @@ namespace Shri.Sprites
 
         public override void Update(GameTime gameTime)
         {
-            if (closeSoundCounter >= 100)
+            if (closeSoundCounter >= 10)
             {
                 closeSoundCounter = -1;
 

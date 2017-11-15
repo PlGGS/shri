@@ -69,7 +69,7 @@ namespace Shri
 
             sprPlayer = new SprPlayer(txrPlayerBlue,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 160)),
+                (Shri.Instance.Window.ClientBounds.Height / 2 + 170)),
                 new Circle(new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
                 (Shri.Instance.Window.ClientBounds.Height / 2 + 170)), txrPlayerBlue.Width / 2),
                 Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
