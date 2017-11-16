@@ -68,6 +68,7 @@
     <Compile Include="Sprites\SprFill.cs" />
     <Compile Include="Sprites\SprPlayer.cs" />
     <Compile Include="Sprites\SprTitle.cs" />
+    <Compile Include="Wall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

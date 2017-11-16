@@ -69,9 +69,9 @@ namespace Shri
 
             sprPlayer = new SprPlayer(txrPlayerBlue,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 170)),
+                (Shri.Instance.Window.ClientBounds.Height / 2 + 160)),
                 new Circle(new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 170)), txrPlayerBlue.Width / 2),
+                (Shri.Instance.Window.ClientBounds.Height / 2 + 160)), txrPlayerBlue.Width / 2),
                 Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
                 Color.Blue, true, 250, 1.0f, 90)
             {
@@ -81,35 +81,35 @@ namespace Shri
 
             sprWallLeft = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
-                Scale = new Vector2(1f, 48f) //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(1f, 48f)
             };
             sprWallRight = new SprWall(txrBlack, new Vector2(Shri.Instance.Window.ClientBounds.Width - txrBlack.Width, 0), Color.Black, Vector2.Zero)
             {
-                Scale = new Vector2(1f, 48f) //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(1f, 48f)
             };
             sprWallTop = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {
-                Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(80f, 1f)
             };
             sprWallBottom = new SprWall(txrBlack, new Vector2(0, Shri.Instance.Window.ClientBounds.Height - txrBlack.Height), Color.Black, Vector2.Zero)
             {
-                Scale = new Vector2(80f, 1f) //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(80f, 1f)
             };
 
             sprFill = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), (txrPlayerBlue.Width / 2)), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
             {
-                Scale = new Vector2(0.1f, 0.1f), //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(0.1f, 0.1f)
             };
             sprFill.Circle.Radius = sprFill.Circle.Radius * sprFill.Scale.X;
 
             sprExit = new SprExit(false, txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
-                Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
+                Scale = new Vector2(20f, 1f)
             };
             sprEntrance = new SprEntrance(true, txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height - txrWhite.Height), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
-                Scale = new Vector2(20f, 1f) //Always make sure to set custom scale after instance creation
-            }; //TODO play sound as entrance closes behind you
+                Scale = new Vector2(20f, 1f)
+            };
 
             _walls.Add(sprWallLeft);
             _walls.Add(sprWallRight);
@@ -126,14 +126,15 @@ namespace Shri
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            //Console.WriteLine($"width: {(Shri.Instance.Window.ClientBounds.Width / 2)}");
-
+            
             sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
             sprFill.Update(gameTime);
             sprEntrance.Update(gameTime);
             sprExit.Update(gameTime);
-            //TODO call wall updates when I begin checking for wall collision
+            foreach (Sprite wall in _walls)
+            {
+                wall.Update(gameTime);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -154,19 +155,19 @@ namespace Shri
                 sprFill.Draw(spriteBatch);
             }
 
-            foreach (Sprite wall in _walls) //TODO wall collision detection
+            foreach (Wall wall in _walls)
             {
-                wall.Draw(spriteBatch); //TODO create base wall object for easier collision detection
+                wall.Draw(spriteBatch);
             }
 
             if (sprExit.Open)
             {
-                sprExit.Draw(spriteBatch); //TODO make doors their own object type for detecting whether or not they're open or closed
+                sprExit.Draw(spriteBatch);
             }
 
             if (sprEntrance.Open)
             {
-                sprEntrance.Draw(spriteBatch); //TODO make doors their own object type for detecting whether or not they're open or closed
+                sprEntrance.Draw(spriteBatch);
             }
 
             sprPlayer.Draw(spriteBatch);

@@ -48,7 +48,6 @@ namespace Shri
 
         public bool Intersects(Circle other)
         {
-            //Console.WriteLine($"distance: {(Math.Sqrt(Math.Pow((other.Center.X - _center.X), 2) + Math.Pow((other.Center.Y - _center.Y), 2)))} | {other.Radius + _radius}");
             return (Math.Sqrt(Math.Pow((other.Center.X - _center.X), 2) + Math.Pow((other.Center.Y - _center.Y), 2))) < (other.Radius + _radius);
         }
 

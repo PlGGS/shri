@@ -37,8 +37,17 @@ namespace Shri.Sprites
             }
         }
 
+        protected Vector2 _prevPosition;
+        public Vector2 PrevPosition
+        {
+            get
+            {
+                return _prevPosition;
+            }
+        }
+
         public SprPlayer(Texture2D texture, Vector2 position, Circle circle, Color tint, Vector2 origin, Color color, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
-            : base(texture,position,tint,origin,isPlayerControlled, speed,  momentum, mvmtDirection)
+            : base(texture, position, tint, origin, isPlayerControlled, speed, momentum, mvmtDirection)
         {
             _circle = circle;
             _circle.Center = circle.Center;
@@ -57,6 +66,8 @@ namespace Shri.Sprites
                 {
                     if (_locked == false)
                     {
+                        _prevPosition = _position;
+
                         if (Shri.Instance.InputManager.Pressed(Input.Up, Input.Left))
                         {
                             _momentum = 1.0f;
@@ -121,7 +132,7 @@ namespace Shri.Sprites
 
                             _circle.Radius = _texture.Width / 2 * _scale.X;
 #if DEBUG
-                            //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
+                            Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
                         if (Shri.Instance.InputManager.Pressed(Input.Shrink))
@@ -134,7 +145,7 @@ namespace Shri.Sprites
 
                             _circle.Radius = _texture.Width / 2 * _scale.X;
 #if DEBUG
-                            //Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
+                            Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
                         
@@ -206,7 +217,7 @@ namespace Shri.Sprites
                 Shri.Instance.Exit(); //TODO find out why exit crashes the game rather than seemlessly closing it
             }
 
-            _circle.Center = Position;
+            _circle.Center = _position;
         }
     }
 }
