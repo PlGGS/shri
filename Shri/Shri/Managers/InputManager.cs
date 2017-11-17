@@ -54,7 +54,7 @@ namespace Shri
                         { Buttons.A, Input.Shoot }
                     };
 
-            if (gamePadState.IsConnected) //TODO possibly add menu option to specifically select controller or keyboard
+            if (gamePadState.IsConnected == true) //TODO possibly add menu option to specifically select controller or keyboard
             {
                 isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
             }
@@ -82,12 +82,22 @@ namespace Shri
             }
             else
             {
-                foreach (KeyValuePair<Buttons, Input> keyValuePair in KeyBindingsGamePad)
+                List<Buttons> pressedButtons = new List<Buttons>();
+
+                foreach (Buttons button in KeyBindingsGamePad.Keys)
+                {
+                    if (gamePadState.IsButtonDown(button))
+                    {
+                        pressedButtons.Add(button);
+                    }
+                }
+
+                foreach (Buttons button in pressedButtons)
                 {
                     //TODO fix gamepad detection
-                    if (gamePadState.IsButtonDown(keyValuePair.Key))
+                    if (KeyBindingsGamePad.ContainsKey(button))
                     {
-                        playerInput |= (int)keyValuePair.Value;
+                        playerInput |= (int)KeyBindingsGamePad[button];
                     }
                 }
             }
