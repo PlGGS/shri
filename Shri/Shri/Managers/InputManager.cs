@@ -82,25 +82,26 @@ namespace Shri
             }
             else
             {
-                List<Buttons> pressedButtons = new List<Buttons>();
+                List<Buttons> pressedButtons = GetPressedButtons();
 
                 foreach (Buttons button in KeyBindingsGamePad.Keys)
                 {
-                    if (gamePadState.IsButtonDown(button))
+                    if (gamePadState.Buttons.Start == ButtonState.Pressed)
                     {
-                        pressedButtons.Add(button);
-                    }
-                }
-
-                foreach (Buttons button in pressedButtons)
-                {
-                    //TODO fix gamepad detection
-                    if (KeyBindingsGamePad.ContainsKey(button))
-                    {
+                        //TODO fix gamepad button detection
                         playerInput |= (int)KeyBindingsGamePad[button];
+                        //Console.WriteLine(button);
                     }
                 }
             }
+        }
+
+        public List<Buttons> GetPressedButtons()
+        {
+            return Enum.GetValues(typeof(Buttons))
+                       .Cast<Buttons>()
+                       .Where(b => gamePadState.IsButtonDown(b))
+                       .ToList();
         }
 
         public bool Pressed(params Input[] inputs)

@@ -60,7 +60,7 @@ namespace Shri.Sprites
             {
                 Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
 
-                Console.WriteLine(_momentum);
+                //Console.WriteLine(_momentum);
 
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {

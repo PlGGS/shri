@@ -172,6 +172,8 @@ namespace Shri
 
             sprPlayer.Draw(spriteBatch);
 
+            //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
+
             spriteBatch.End();
         }
     }

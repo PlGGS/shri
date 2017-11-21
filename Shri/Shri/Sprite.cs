@@ -159,7 +159,8 @@ namespace Shri
         {
             get
             {
-                _bounds = new Rectangle((int)_position.X, (int)_position.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y)); //fix bounds for object with different origins
+                _bounds = new Rectangle((int)_position.X - (int)(_origin.X * _scale.X), (int)_position.Y - (int)(_origin.Y * _scale.Y), (int)(_width * _scale.X), (int)(_height * _scale.Y)); //fix bounds for object with different origins
+                Console.WriteLine((_scale.X));
                 return _bounds;
             }
         }
@@ -187,7 +188,7 @@ namespace Shri
         
         public virtual void Update(GameTime gameTime)
         {
-            
+
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
