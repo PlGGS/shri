@@ -77,8 +77,9 @@ namespace Shri
                 new SoundFX {Key = "NoFill", FileName = "Content\\Audio\\noFill.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
                 new SoundFX {Key = "Open", FileName = "Content\\Audio\\open.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
                 new SoundFX {Key = "Close", FileName = "Content\\Audio\\close.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
-                new SoundFX {Key = "Music", FileName = "Content\\Audio\\music.wav", DefaultPitch = 0.01f, DefaultVolume = 1}
-            });
+                new SoundFX {Key = "Music", FileName = "Content\\Audio\\music.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
+                new SoundFX {Key = "TempWin", FileName = "Content\\Audio\\tempWin.wav", DefaultPitch = 0.01f, DefaultVolume = 1}
+            }, 1);
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace Shri.Sprites
                     if (this.Open)
                     {
                         //TODO go to next level
-                        Shri.Instance.SoundManager.PlaySound("Fill");
+                        Shri.Instance.SoundManager.PlaySound("TempWin");
                     }
                 }
             }

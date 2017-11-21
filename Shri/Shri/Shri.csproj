@@ -94,6 +94,9 @@
     <Content Include="Content\Audio\open.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Audio\tempWin.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Fonts\medium-font.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

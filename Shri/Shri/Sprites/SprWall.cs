@@ -24,9 +24,7 @@ namespace Shri.Sprites
 
                 if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
                 {
-                    //Console.WriteLine(currentGameScreen.sprPlayer.Position.X - currentGameScreen.sprPlayer.Origin.X);
                     currentGameScreen.sprPlayer.Position = currentGameScreen.sprPlayer.PrevPosition;
-                    Shri.Instance.SoundManager.PlaySound("Fill");
                 }
             }
         }
