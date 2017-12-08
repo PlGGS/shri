@@ -13,7 +13,7 @@ namespace Shri
     public class MainMenu : GameScreen
     {
         Texture2D txrTitle;
-        Sprite sprTitle;
+        SprTitle sprTitle;
 
         public MainMenu()
         {

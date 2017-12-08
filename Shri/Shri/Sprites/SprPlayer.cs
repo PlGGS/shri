@@ -52,16 +52,15 @@ namespace Shri.Sprites
             _circle = circle;
             _circle.Center = circle.Center;
             _circle.Radius = circle.Radius;
+            _color = color;
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level)
             {
-                Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
-
-                //Console.WriteLine(_momentum);
-
+                Level currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level;
+                
                 if ((Keyboard.GetState().GetPressedKeys().Length > 0))
                 {
                     if (_locked == false)

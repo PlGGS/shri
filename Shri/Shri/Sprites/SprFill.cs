@@ -92,9 +92,9 @@ namespace Shri.Sprites
 
         public override void Update(GameTime gameTime)
         {
-            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level)
             {
-                Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+                Level currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level;
 
                 if (_filled == false)
                 {
@@ -108,7 +108,7 @@ namespace Shri.Sprites
                         }
                         else
                         {
-                            Shri.Instance.SoundManager.PlaySound("NoFill"); //TODO only play if just intersected with player
+                            Shri.Instance.SoundManager.PlaySound("NoFill"); //TODO only play if just intersected with player and make more noticeable
                         }
                     }
                 }
@@ -133,7 +133,6 @@ namespace Shri.Sprites
                         _holdPlayer = false;
                         holdTimer = 0;
                         _filled = true;
-                        currentGameScreen.sprExit.Open = true;
                     }
                 }
             }

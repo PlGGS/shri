@@ -48,8 +48,10 @@
     <Compile Include="Door.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FramedSprite.cs" />
+    <Compile Include="GameScreens\Level.cs" />
     <Compile Include="GameScreen.cs" />
     <Compile Include="GameScreens\Level0.cs" />
+    <Compile Include="GameScreens\Level1.cs" />
     <Compile Include="GameScreens\MainMenu.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Managers\ContentManager.cs" />
@@ -68,7 +70,6 @@
     <Compile Include="Sprites\SprFill.cs" />
     <Compile Include="Sprites\SprPlayer.cs" />
     <Compile Include="Sprites\SprTitle.cs" />
-    <Compile Include="Wall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

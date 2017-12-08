@@ -18,16 +18,24 @@ namespace Shri.Sprites
 
         public override void Update(GameTime gameTime)
         {
-            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level)
             {
-                Level0 currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level0;
+                Level currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level;
 
                 if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
                 {
                     if (this.Open)
                     {
-                        //TODO go to next level
-                        Shri.Instance.SoundManager.PlaySound("TempWin");
+                        /*
+                        switch (Shri.Instance.GameScreenManager.CurrentGameScreen.GetType()) //TODO enumerate type of Levels
+                        {
+                            case Level0:
+                                Shri.Instance.GameScreenManager.Push(new Level1());
+                                break;
+                        }
+                        */
+
+                        Shri.Instance.GameScreenManager.Push(new Level1());
                     }
                 }
             }

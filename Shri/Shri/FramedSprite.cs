@@ -95,6 +95,8 @@ namespace Shri
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            base.Draw(spriteBatch);
+
             spriteBatch.Draw(_texture, position, _sourceRectangle, _tint);
         }
     }
