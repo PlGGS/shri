@@ -123,6 +123,29 @@ namespace Shri.Sprites
 
                         if (Shri.Instance.InputManager.Pressed(Input.Grow))
                         {
+                            bool intersecting = false;
+
+                            foreach (SprWall wall in currentGameScreen.Walls)
+                            {
+                                if (this.Bounds.Intersects(wall.Bounds))
+                                {
+                                    intersecting = true;
+                                    Shrink();
+                                }
+                            }
+
+                            if (!intersecting)
+                            {
+                                Grow();
+                            }
+                        }
+                        if (Shri.Instance.InputManager.Pressed(Input.Shrink))
+                        {
+                            Shrink();
+                        }
+
+                        void Grow()
+                        {
                             float tmpScale = _scale.X;
 
                             _scale += new Vector2(0.01f, 0.01f);
@@ -134,7 +157,8 @@ namespace Shri.Sprites
                             Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
-                        if (Shri.Instance.InputManager.Pressed(Input.Shrink))
+
+                        void Shrink()
                         {
                             float tmpScale = _scale.X;
 
@@ -147,7 +171,7 @@ namespace Shri.Sprites
                             Console.WriteLine(new Vector2(((_width * _scale.X) / 2), ((_height * _scale.Y) / 2)));
 #endif
                         }
-                        
+
                         if (Shri.Instance.InputManager.Pressed(Input.Blue))
                         {
                             _texture = currentGameScreen.txrPlayerBlue;
