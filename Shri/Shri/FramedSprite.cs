@@ -59,7 +59,7 @@ namespace Shri
             }
         }
 
-        Rectangle _sourceRectangle;
+        Rectangle _sourceRectangle; //THIS IS THE ISSUE
         public Rectangle SourceRectangle
         {
             get
@@ -90,14 +90,8 @@ namespace Shri
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Draw(spriteBatch, _position);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
-        {
-            base.Draw(spriteBatch);
-
-            spriteBatch.Draw(_texture, position, _sourceRectangle, _tint);
+            Console.WriteLine(SourceRectangle);
+            spriteBatch.Draw(_texture, position: _position, sourceRectangle: _sourceRectangle, color: _tint, scale: _scale, origin: _origin);
         }
     }
 }

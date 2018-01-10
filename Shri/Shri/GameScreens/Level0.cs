@@ -41,7 +41,6 @@ namespace Shri
             txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
             sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
             Dictionary<int, int> mapping = contentManager.GetFontMapping("Content\\Fonts\\medium-font.fontmapping");
-
             fntMediumFont = new Font(sprMediumFont, mapping, 1, 2, Color.Green);
         }
 
@@ -61,8 +60,6 @@ namespace Shri
         {
             base.Draw(spriteBatch);
 
-            fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(100, 100)); //TODO fix this
-
             if (sprFill.Filled == false)
             {
                 sprFill.Texture = txrFillRed;
@@ -76,6 +73,8 @@ namespace Shri
 
             sprPlayer.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
+
+            fntMediumFont.DrawString(spriteBatch, "ABC", new Vector2(100, 100)); //TODO fix this
 
             spriteBatch.End();
         }

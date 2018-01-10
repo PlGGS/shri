@@ -30,7 +30,7 @@ namespace Shri
             }
         }
 
-        public Font(FramedSprite framedSprite, Dictionary<int, int> mapping, int horizontalCell, int verticalCell, Color fontColor)
+        public Font(FramedSprite framedSprite, Dictionary<int, int> mapping, int horizontalKern, int verticalKern, Color fontColor)
         {
             _sprite = framedSprite;
             _sprite.CurrentFrame = 0;
@@ -40,8 +40,8 @@ namespace Shri
 
             kerning = new Size
             {
-                Height = horizontalCell,
-                Width = verticalCell
+                Height = horizontalKern,
+                Width = verticalKern
             };
         }
 
@@ -56,11 +56,16 @@ namespace Shri
                 int key = BitConverter.ToInt16(bytes, 0);
                 int translatedValue = _mapping[key];
 
+                Console.Write(_mapping[key]);
+                
                 _sprite.CurrentFrame = translatedValue;
-                _sprite.Draw(spriteBatch, position);
 
                 x += Sprite.FrameSize.Width + kerning.Width;
+                _sprite.Position = new Vector2(x, y);
+
+                _sprite.Draw(spriteBatch);
             }
+            Console.WriteLine();
         }
     }
 }
