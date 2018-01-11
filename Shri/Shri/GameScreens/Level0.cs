@@ -74,7 +74,7 @@ namespace Shri
             sprPlayer.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
 
-            fntMediumFont.DrawString(spriteBatch, "ABC", new Vector2(100, 100)); //TODO fix this
+            fntMediumFont.DrawString(spriteBatch, "ABCDEFGHIJK", new Vector2(20, 20)); //TODO fix this
 
             spriteBatch.End();
         }

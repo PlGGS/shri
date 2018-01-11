@@ -59,17 +59,19 @@ namespace Shri
             }
         }
 
-        Rectangle _sourceRectangle; //THIS IS THE ISSUE
+        Rectangle _sourceRectangle;
         public Rectangle SourceRectangle
         {
             get
             {
-                int frameX = _currentFrame / _framesX;
-                int frameY = _currentFrame % _framesY;
-                int textureX = BorderSize + ((_borderSize + _frameSize.Width) * frameX);
-                int textureY = BorderSize + ((_borderSize + _frameSize.Height) * frameY);
+                int frameX = _currentFrame % _framesX;//TODO fix this by sending the character I want to use to this class
+                int frameY = _currentFrame / _framesY; //TODO and this
+                int locX = BorderSize + ((_borderSize + _frameSize.Width) * frameX);
+                int locY = BorderSize + ((_borderSize + _frameSize.Height) * frameY);
 
-                _sourceRectangle = new Rectangle(textureX, textureY, _frameSize.Width, _frameSize.Height);
+                Console.WriteLine($"Frame: {_currentFrame}, X: {frameX}, Y: {frameY}, Width: {_frameSize.Width}, Height: {_frameSize.Height}");
+
+                _sourceRectangle = new Rectangle(locX, locY, _frameSize.Width, _frameSize.Height);
 
                 return _sourceRectangle;
             }
@@ -90,7 +92,7 @@ namespace Shri
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Console.WriteLine(SourceRectangle);
+            Console.WriteLine(SourceRectangle); //Do not delete this line. It is a FramedSprite's rendering savior
             spriteBatch.Draw(_texture, position: _position, sourceRectangle: _sourceRectangle, color: _tint, scale: _scale, origin: _origin);
         }
     }
