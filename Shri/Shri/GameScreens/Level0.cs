@@ -39,7 +39,7 @@ namespace Shri
             sprFill.Circle.Radius = sprFill.Circle.Radius * sprFill.Scale.X;
 
             txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
-            sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
+            sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false); //White text with transparent background for color to work properly
             Dictionary<int, int> mapping = contentManager.GetFontMapping("Content\\Fonts\\medium-font.fontmapping");
             fntMediumFont = new Font(sprMediumFont, mapping, 1, 2, Color.Green);
         }
@@ -74,7 +74,7 @@ namespace Shri
             sprPlayer.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
 
-            fntMediumFont.DrawString(spriteBatch, "ZYXWVUTSRQ", new Vector2(20, 20)); //TODO fix this
+            fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(20, 200)); //TODO add space/remove $ and redo y determination
 
             spriteBatch.End();
         }
