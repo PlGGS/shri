@@ -104,12 +104,28 @@ namespace Shri
             }
         }
 
+        public int ScaledWidth
+        {
+            get
+            {
+                return (int)(_width * _scale.X);
+            }
+        }
+
         protected int _height;
         public int Height
         {
             get
             {
                 return _height;
+            }
+        }
+
+        public int ScaledHeight
+        {
+            get
+            {
+                return (int)(_height * _scale.Y);
             }
         }
 

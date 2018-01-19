@@ -59,17 +59,15 @@ namespace Shri
             }
         }
 
-        Rectangle _sourceRectangle;
+        Rectangle _sourceRectangle; //Don't access this directly. Only by getter
         public Rectangle SourceRectangle
         {
             get
             {
-                int frameX = _currentFrame % _framesX;//TODO fix this by sending the character I want to use to this class
-                int frameY = _currentFrame / _framesY; //TODO and this
+                int frameX = _currentFrame % _framesX;
+                int frameY = _currentFrame / _framesX;
                 int locX = BorderSize + ((_borderSize + _frameSize.Width) * frameX);
                 int locY = BorderSize + ((_borderSize + _frameSize.Height) * frameY);
-
-                Console.WriteLine($"Frame: {_currentFrame}, X: {frameX}, Y: {frameY}, Width: {_frameSize.Width}, Height: {_frameSize.Height}");
 
                 _sourceRectangle = new Rectangle(locX, locY, _frameSize.Width, _frameSize.Height);
 
@@ -92,8 +90,7 @@ namespace Shri
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Console.WriteLine(SourceRectangle); //Do not delete this line. It is a FramedSprite's rendering savior
-            spriteBatch.Draw(_texture, position: _position, sourceRectangle: _sourceRectangle, color: _tint, scale: _scale, origin: _origin);
+            spriteBatch.Draw(_texture, position: _position, sourceRectangle: SourceRectangle, color: _tint, scale: _scale, origin: _origin);
         }
     }
 }

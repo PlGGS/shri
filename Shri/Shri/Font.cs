@@ -56,8 +56,6 @@ namespace Shri
                 int key = BitConverter.ToInt16(bytes, 0);
                 int translatedValue = _mapping[key];
 
-                Console.Write(_mapping[key]);
-                
                 _sprite.CurrentFrame = translatedValue;
 
                 _sprite.Position = new Vector2(x, y);
@@ -65,7 +63,6 @@ namespace Shri
 
                 _sprite.Draw(spriteBatch);
             }
-            Console.WriteLine();
         }
     }
 }

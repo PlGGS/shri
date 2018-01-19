@@ -21,22 +21,32 @@ namespace Shri.Sprites
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level)
             {
                 Level currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level;
-
-                if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                
+                Console.WriteLine($"{currentGameScreen.sprPlayer.ScaledWidth}, {this.ScaledWidth}");
+                if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds) &&
+                    currentGameScreen.sprPlayer.Bounds.X > this.Bounds.X &&
+                    currentGameScreen.sprPlayer.Bounds.X + currentGameScreen.sprPlayer.ScaledWidth < this.Bounds.X + this.ScaledWidth &&
+                    this.Open)
                 {
-                    if (this.Open)
-                    {
-                        /*
-                        switch (Shri.Instance.GameScreenManager.CurrentGameScreen.GetType()) //TODO enumerate type of Levels
-                        {
-                            case Level0:
-                                Shri.Instance.GameScreenManager.Push(new Level1());
-                                break;
-                        }
-                        */
+                    currentGameScreen.sprWallTop.Thru = true;
+                }
+                else
+                {
+                    currentGameScreen.sprWallTop.Thru = false;
+                }
 
-                        Shri.Instance.GameScreenManager.Push(new Level1());
+                if (currentGameScreen.sprPlayer.Position.Y <= ((currentGameScreen.sprPlayer.Height * currentGameScreen.sprPlayer.Scale.Y) * -1) / 2)
+                {
+                    /*
+                    switch (Shri.Instance.GameScreenManager.CurrentGameScreen.GetType()) //TODO enumerate type of Levels
+                    {
+                        case Level0:
+                            Shri.Instance.GameScreenManager.Push(new Level1());
+                            break;
                     }
+                    */
+
+                    Shri.Instance.GameScreenManager.Push(new Level1());
                 }
             }
         }
