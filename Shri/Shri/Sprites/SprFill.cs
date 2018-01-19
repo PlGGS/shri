@@ -100,8 +100,8 @@ namespace Shri.Sprites
                 {
                     if (this.Circle.Intersects(currentGameScreen.sprPlayer.Circle))
                     {
-                        if (currentGameScreen.sprPlayer.Scale.X >= _scale.X - 0.03 &&
-                        currentGameScreen.sprPlayer.Scale.X <= _scale.X + 0.03 &&
+                        if (currentGameScreen.sprPlayer.Scale.X >= _scale.X - 0.01 &&
+                        currentGameScreen.sprPlayer.Scale.X <= _scale.X + 0.01 &&
                         currentGameScreen.sprPlayer.Color == _color)
                         {
                             _holdPlayer = true;
