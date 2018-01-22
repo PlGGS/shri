@@ -51,6 +51,7 @@
     <Compile Include="GameScreens\Level.cs" />
     <Compile Include="GameScreen.cs" />
     <Compile Include="GameScreens\Level0.cs" />
+    <Compile Include="GameScreens\Level2.cs" />
     <Compile Include="GameScreens\Level1.cs" />
     <Compile Include="GameScreens\MainMenu.cs" />
     <Compile Include="Input.cs" />

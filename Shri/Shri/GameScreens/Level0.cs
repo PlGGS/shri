@@ -51,6 +51,8 @@ namespace Shri
         {
             base.Draw(spriteBatch);
 
+            fntMediumFont.DrawString(spriteBatch, "Colors", new Vector2(20, 20));
+
             if (sprFill.Filled == false)
             {
                 sprFill.Texture = txrFillRed;
@@ -64,9 +66,7 @@ namespace Shri
 
             sprPlayer.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
-
-            fntMediumFont.DrawString(spriteBatch, "Colors", new Vector2(20, 20));
-
+            
             spriteBatch.End();
         }
     }

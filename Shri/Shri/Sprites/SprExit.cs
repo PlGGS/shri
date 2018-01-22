@@ -37,16 +37,14 @@ namespace Shri.Sprites
 
                 if (currentGameScreen.sprPlayer.Position.Y <= ((currentGameScreen.sprPlayer.Height * currentGameScreen.sprPlayer.Scale.Y) * -1) / 2)
                 {
-                    /*
-                    switch (Shri.Instance.GameScreenManager.CurrentGameScreen.GetType()) //TODO enumerate type of Levels
+                    if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
                     {
-                        case Level0:
-                            Shri.Instance.GameScreenManager.Push(new Level1());
-                            break;
+                        Shri.Instance.GameScreenManager.Push(new Level1());
                     }
-                    */
-
-                    Shri.Instance.GameScreenManager.Push(new Level1());
+                    else if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level1)
+                    {
+                        Shri.Instance.GameScreenManager.Push(new Level2());
+                    }
                 }
             }
         }

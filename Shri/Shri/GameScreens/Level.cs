@@ -51,7 +51,7 @@ namespace Shri
             txrFillBlue = contentManager.GetTexture("Content\\Images\\fillBlue.png");
             txrFillYellow = contentManager.GetTexture("Content\\Images\\fillYellow.png");
             txrFillRed = contentManager.GetTexture("Content\\Images\\fillRed.png");
-            txrFilled = contentManager.GetTexture("Content\\Images\\filled.png");
+            txrFilled = contentManager.GetTexture("Content\\Images\\filled.png"); //TODO change the way fill textures are loaded
 
             sprPlayer = new SprPlayer(txrPlayerBlue, //TODO pass size and color to new GameScreen
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),

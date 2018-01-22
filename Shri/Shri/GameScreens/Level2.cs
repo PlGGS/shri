@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace Shri
 {
-    public class Level1 : Level
+    public class Level2 : Level
     {
         public SprFill sprFillLeft;
+        public SprFill sprFillMid;
         public SprFill sprFillRight;
         
-        public Level1()
+        public Level2()
         {
 
         }
@@ -29,11 +30,17 @@ namespace Shri
         {
             base.LoadContent(contentManager);
 
-            sprFillLeft = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 4, Shri.Instance.Window.ClientBounds.Height / 2), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), (txrPlayerBlue.Width / 2)), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Blue)
+            sprFillLeft = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 4, Shri.Instance.Window.ClientBounds.Height - (Shri.Instance.Window.ClientBounds.Height / 3)), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), (txrPlayerBlue.Width / 2)), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Blue)
             {
-                Scale = new Vector2(0.5f, 0.5f)
+                Scale = new Vector2(0.15f, 0.15f)
             };
             sprFillLeft.Circle.Radius *= sprFillLeft.Scale.X;
+
+            sprFillMid = new SprFill(txrFillRed, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2 - 20, Shri.Instance.Window.ClientBounds.Height / 4), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), (txrPlayerBlue.Width / 2)), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Yellow)
+            {
+                Scale = new Vector2(0.2f, 0.2f)
+            };
+            sprFillMid.Circle.Radius *= sprFillMid.Scale.X;
 
             sprFillRight = new SprFill(txrFillRed, new Vector2((Shri.Instance.Window.ClientBounds.Width / 4) * 3, Shri.Instance.Window.ClientBounds.Height / 2), new Circle(new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, Shri.Instance.Window.ClientBounds.Height / 2), (txrPlayerBlue.Width / 2)), Color.White, new Vector2(txrFillBlue.Width / 2, txrFillBlue.Height / 2), Color.Red)
             {
@@ -47,9 +54,10 @@ namespace Shri
             base.Update(gameTime);
 
             sprFillLeft.Update(gameTime);
+            sprFillMid.Update(gameTime);
             sprFillRight.Update(gameTime);
 
-            if (sprFillLeft.Filled && sprFillRight.Filled)
+            if (sprFillLeft.Filled && sprFillRight.Filled && sprFillMid.Filled)
             {
                 sprExit.Open = true;
             }
@@ -59,8 +67,8 @@ namespace Shri
         {
             base.Draw(spriteBatch);
 
-            fntMediumFont.DrawString(spriteBatch, "Conjunction", new Vector2(20, 20));
-
+            fntMediumFont.DrawString(spriteBatch, "Conceal", new Vector2(20, 20));
+            
             if (sprFillLeft.Filled == false)
             {
                 sprFillLeft.Texture = txrFillBlue;
@@ -70,6 +78,17 @@ namespace Shri
             {
                 sprFillLeft.Texture = txrFilled;
                 sprFillLeft.Draw(spriteBatch);
+            }
+
+            if (sprFillMid.Filled == false)
+            {
+                sprFillMid.Texture = txrFillYellow;
+                sprFillMid.Draw(spriteBatch);
+            }
+            else
+            {
+                sprFillMid.Texture = txrFilled;
+                sprFillMid.Draw(spriteBatch);
             }
 
             if (sprFillRight.Filled == false)
