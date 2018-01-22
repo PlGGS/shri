@@ -20,7 +20,8 @@ namespace Shri
         public Texture2D txrFilled;
         public Texture2D txrBlack;
         public Texture2D txrWhite;
-
+        public Texture2D txrMediumFont;
+       
         public SprPlayer sprPlayer;
         protected List<SprWall> _walls = new List<SprWall>();
         public List<SprWall> Walls
@@ -36,6 +37,9 @@ namespace Shri
         public SprWall sprWallBottom;
         public SprEntrance sprEntrance;
         public SprExit sprExit;
+        public FramedSprite sprMediumFont;
+
+        public Font fntMediumFont;
 
         public override void LoadContent(ContentManager contentManager)
         {
@@ -91,6 +95,11 @@ namespace Shri
             _walls.Add(sprWallRight);
             _walls.Add(sprWallTop);
             _walls.Add(sprWallBottom);
+
+            txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
+            sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
+            Dictionary<int, int> mapping = contentManager.GetFontMapping("Content\\Fonts\\medium-font.fontmapping");
+            fntMediumFont = new Font(sprMediumFont, mapping, 1, 2, Color.Black);
         }
 
         public override void Update(GameTime gameTime)

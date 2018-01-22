@@ -13,11 +13,7 @@ namespace Shri
     public class Level0 : Level
     {
         public SprFill sprFill;
-
-        Texture2D txrMediumFont;
-        FramedSprite sprMediumFont;
-        Font fntMediumFont;
-
+        
         public Level0()
         {
             
@@ -37,11 +33,6 @@ namespace Shri
                 Scale = new Vector2(0.1f, 0.1f)
             };
             sprFill.Circle.Radius = sprFill.Circle.Radius * sprFill.Scale.X;
-
-            txrMediumFont = contentManager.GetTexture("Content\\Fonts\\medium-font.png");
-            sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
-            Dictionary<int, int> mapping = contentManager.GetFontMapping("Content\\Fonts\\medium-font.fontmapping");
-            fntMediumFont = new Font(sprMediumFont, mapping, 1, 2, Color.Green);
         }
 
         public override void Update(GameTime gameTime)
@@ -74,7 +65,7 @@ namespace Shri
             sprPlayer.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
 
-            fntMediumFont.DrawString(spriteBatch, "Hello, World", new Vector2(20, 20)); //TODO fix this
+            fntMediumFont.DrawString(spriteBatch, "Colors", new Vector2(20, 20));
 
             spriteBatch.End();
         }

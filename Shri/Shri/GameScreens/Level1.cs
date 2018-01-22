@@ -84,6 +84,8 @@ namespace Shri
             sprPlayer.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green); //TODO add debug bounds drawing input
 
+            fntMediumFont.DrawString(spriteBatch, "Conjunction", new Vector2(20, 20));
+
             spriteBatch.End();
         }
     }
