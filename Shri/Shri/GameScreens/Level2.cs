@@ -15,10 +15,10 @@ namespace Shri
         public SprFill sprFillLeft;
         public SprFill sprFillMid;
         public SprFill sprFillRight;
-        
-        public Level2()
-        {
 
+        public Level2(SprPlayer player)
+        {
+            sprPlayer = player;
         }
 
         public override void Initialize()

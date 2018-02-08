@@ -53,17 +53,27 @@ namespace Shri
             txrFillRed = contentManager.GetTexture("Content\\Images\\fillRed.png");
             txrFilled = contentManager.GetTexture("Content\\Images\\filled.png"); //TODO change the way fill textures are loaded
 
-            sprPlayer = new SprPlayer(txrPlayerBlue, //TODO pass size and color to new GameScreen
+            if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
+            {
+                sprPlayer = new SprPlayer(txrPlayerBlue,
                 new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
                 (Shri.Instance.Window.ClientBounds.Height / 2 + 160)),
                 new Circle(new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
                 (Shri.Instance.Window.ClientBounds.Height / 2 + 160)), txrPlayerBlue.Width / 2),
                 Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
                 Color.Blue, true, 250, 1.0f, 90)
+                {
+                    Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
+                };
+                sprPlayer.Circle.Radius = sprPlayer.Circle.Radius * sprPlayer.Scale.X;
+            }
+            else
             {
-                Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
-            };
-            sprPlayer.Circle.Radius = sprPlayer.Circle.Radius * sprPlayer.Scale.X;
+                sprPlayer.Position = new Vector2((Shri.Instance.Window.ClientBounds.Width / 2), (Shri.Instance.Window.ClientBounds.Height / 2 + 160));
+                sprPlayer.Speed = 250;
+                sprPlayer.Momentum = 1.0f;
+                sprPlayer.MvmtDirection = 90;
+            }
 
             sprWallLeft = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
             {

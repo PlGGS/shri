@@ -155,6 +155,10 @@ namespace Shri
             {
                 return _mvmtDirection;
             }
+            set
+            {
+                _mvmtDirection = value;
+            }
         }
 
         protected bool _locked;

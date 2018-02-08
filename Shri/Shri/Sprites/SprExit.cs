@@ -39,11 +39,11 @@ namespace Shri.Sprites
                 {
                     if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
                     {
-                        Shri.Instance.GameScreenManager.Push(new Level1());
+                        Shri.Instance.GameScreenManager.Push(new Level1(currentGameScreen.sprPlayer));
                     }
                     else if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level1)
                     {
-                        Shri.Instance.GameScreenManager.Push(new Level2());
+                        Shri.Instance.GameScreenManager.Push(new Level2(currentGameScreen.sprPlayer));
                     }
                 }
             }
