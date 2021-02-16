@@ -6,11 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shri.Managers;
 
 namespace Shri
 {
     public abstract class Level : GameScreen
     {
+        private readonly float initialPlayerScale = 0.2f;
+
         public Texture2D txrPlayerBlue;
         public Texture2D txrPlayerYellow;
         public Texture2D txrPlayerRed;
@@ -21,8 +24,8 @@ namespace Shri
         public Texture2D txrBlack;
         public Texture2D txrWhite;
         public Texture2D txrMediumFont;
-       
-        public SprPlayer sprPlayer;
+
+        public Entity Player;
         protected List<SprWall> _walls = new List<SprWall>();
         public List<SprWall> Walls
         {
@@ -55,24 +58,24 @@ namespace Shri
 
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
-                sprPlayer = new SprPlayer(txrPlayerBlue,
-                new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 160)),
-                new Circle(new Vector2((Shri.Instance.Window.ClientBounds.Width / 2),
-                (Shri.Instance.Window.ClientBounds.Height / 2 + 160)), txrPlayerBlue.Width / 2),
-                Color.White, new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
-                Color.Blue, true, 250, 1.0f, 90)
-                {
-                    Scale = new Vector2(0.2f, 0.2f) //Always make sure to set custom scale after instance creation
-                };
-                sprPlayer.Circle.Radius = sprPlayer.Circle.Radius * sprPlayer.Scale.X;
+                Player = new Entity(
+                    texture: txrPlayerBlue,
+                    position: new Vector2((Shri.Instance.Window.ClientBounds.Width / 2), (Shri.Instance.Window.ClientBounds.Height / 2 + 160)),
+                    circle: new Circle(new Vector2((Shri.Instance.Window.ClientBounds.Width / 2), (Shri.Instance.Window.ClientBounds.Height / 2 + 160 * initialPlayerScale)), (txrPlayerBlue.Width / 2) * initialPlayerScale),
+                    tint: Color.White,
+                    origin: new Vector2((txrPlayerBlue.Width) / 2, (txrPlayerBlue.Height) / 2),
+                    color: Color.Blue, true, 250, 1.0f, 90,
+                    scale: new Vector2(initialPlayerScale, initialPlayerScale)
+                );
+
+                Shri.Instance.ControlManager = new ControlManager(Player, false);
             }
             else
             {
-                sprPlayer.Position = new Vector2((Shri.Instance.Window.ClientBounds.Width / 2), (Shri.Instance.Window.ClientBounds.Height / 2 + 160));
-                sprPlayer.Speed = 250;
-                sprPlayer.Momentum = 1.0f;
-                sprPlayer.MvmtDirection = 90;
+                Player.Position = new Vector2((Shri.Instance.Window.ClientBounds.Width / 2), (Shri.Instance.Window.ClientBounds.Height / 2 + 160));
+                Player.Speed = 250;
+                Player.Momentum = 1.0f;
+                Player.MvmtDirection = 90;
             }
 
             sprWallLeft = new SprWall(txrBlack, Vector2.Zero, Color.Black, Vector2.Zero)
@@ -91,7 +94,7 @@ namespace Shri
             {
                 Scale = new Vector2(80f, 1f)
             };
-            
+
             sprExit = new SprExit(false, txrWhite, new Vector2(Shri.Instance.Window.ClientBounds.Width / 2, 0), Color.White, new Vector2(txrWhite.Width / 2, 0))
             {
                 Scale = new Vector2(20f, 1.5f)
@@ -114,7 +117,7 @@ namespace Shri
 
         public override void Update(GameTime gameTime)
         {
-            sprPlayer.Update(gameTime); //TODO reminder to always call sprite updates
+            Player.Update(gameTime); //TODO reminder to always call sprite updates
             sprEntrance.Update(gameTime);
             sprExit.Update(gameTime);
             foreach (Sprite wall in _walls)

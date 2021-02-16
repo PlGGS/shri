@@ -98,11 +98,11 @@ namespace Shri.Sprites
 
                 if (_filled == false)
                 {
-                    if (this.Circle.Intersects(currentGameScreen.sprPlayer.Circle))
+                    if (this.Circle.Intersects(currentGameScreen.Player.Circle))
                     {
-                        if (currentGameScreen.sprPlayer.Scale.X >= _scale.X - 0.01 &&
-                        currentGameScreen.sprPlayer.Scale.X <= _scale.X + 0.01 &&
-                        currentGameScreen.sprPlayer.Color == _color)
+                        if (currentGameScreen.Player.Scale.X >= _scale.X - 0.01 &&
+                        currentGameScreen.Player.Scale.X <= _scale.X + 0.01 &&
+                        currentGameScreen.Player.Color == _color)
                         {
                             _holdPlayer = true;
                         }
@@ -115,7 +115,7 @@ namespace Shri.Sprites
 
                 if (_holdPlayer)
                 {
-                    currentGameScreen.sprPlayer.Position = _position;
+                    currentGameScreen.Player.Position = _position;
 
                     if (holdTimer == 0)
                     {
@@ -125,11 +125,11 @@ namespace Shri.Sprites
                     if (holdTimer < 3000 * gameTime.ElapsedGameTime.Milliseconds / 1000f)
                     {
                         holdTimer += 1;
-                        currentGameScreen.sprPlayer.Locked = true;
+                        currentGameScreen.Player.Locked = true;
                     }
                     else
                     {
-                        currentGameScreen.sprPlayer.Locked = false;
+                        currentGameScreen.Player.Locked = false;
                         _holdPlayer = false;
                         holdTimer = 0;
                         _filled = true;

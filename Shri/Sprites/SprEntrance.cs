@@ -28,7 +28,7 @@ namespace Shri.Sprites
                 {
                     Level currentGameScreen = Shri.Instance.GameScreenManager.CurrentGameScreen as Level;
 
-                    if (!this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                    if (!this.Bounds.Intersects(currentGameScreen.Player.Bounds))
                     {
                         this.Open = false;
                         Shri.Instance.SoundManager.PlaySound("Close");

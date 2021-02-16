@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shri.Managers;
 
 namespace Shri
 {
@@ -16,9 +17,9 @@ namespace Shri
         public SprFill sprFillMid;
         public SprFill sprFillRight;
 
-        public Level2(SprPlayer player)
+        public Level2(Entity player)
         {
-            sprPlayer = player;
+            Player = player;
         }
 
         public override void Initialize()
@@ -102,7 +103,7 @@ namespace Shri
                 sprFillRight.Draw(spriteBatch);
             }
 
-            sprPlayer.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
             //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green); //TODO add debug bounds drawing input
 
             spriteBatch.End();

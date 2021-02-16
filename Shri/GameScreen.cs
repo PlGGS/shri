@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shri.Managers;
 
 namespace Shri
 {
-    public abstract class GameScreen
+    public abstract class GameScreen //TODO add bool to gamescreen to initially set mouse cursor in the center of the screen
     {
         protected bool _initialized;
         public bool Initialized

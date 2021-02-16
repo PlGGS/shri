@@ -23,7 +23,7 @@ namespace Shri
                 return _instance;
             }
         }
-        
+
         GraphicsDeviceManager _graphics;
         SpriteBatch spriteBatch;
 
@@ -45,6 +45,18 @@ namespace Shri
             }
         }
 
+        ControlManager _controlManager;
+        public ControlManager ControlManager
+        {
+            get
+            {
+                return _controlManager;
+            }
+            set
+            {
+                _controlManager = value;
+            }
+        }
 
         ContentManager _contentManager;
         public ContentManager ContentManager
@@ -121,7 +133,9 @@ namespace Shri
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            _inputManager.Update();
+            _inputManager.Update(gameTime);
+            if (_controlManager != null)
+                _controlManager.Update(gameTime);
             _gameScreenManager.Update(gameTime, GraphicsDevice);
             base.Update(gameTime);
         }
@@ -135,7 +149,7 @@ namespace Shri
             GraphicsDevice.Clear(Color.White); //This makes sure we're not still rendering old screens when we shift to a new one
 
             _gameScreenManager.Draw(spriteBatch);
-            
+
             base.Draw(gameTime);
         }
     }

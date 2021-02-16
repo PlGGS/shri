@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shri.Managers;
 
 namespace Shri
 {
@@ -64,8 +65,8 @@ namespace Shri
                 sprFill.Draw(spriteBatch);
             }
 
-            sprPlayer.Draw(spriteBatch);
-            //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green);
+            Player.Draw(spriteBatch);
+            //spriteBatch.Draw(txrWhite, sprPlayer.Bounds, Color.Green); //TODO figure out what this is supposed to be
             
             spriteBatch.End();
         }

@@ -37,9 +37,9 @@ namespace Shri.Sprites
 
                 if (_thru == false)
                 {
-                    if (this.Bounds.Intersects(currentGameScreen.sprPlayer.Bounds))
+                    if (this.Bounds.Intersects(currentGameScreen.Player.Bounds))
                     {
-                        currentGameScreen.sprPlayer.Position = currentGameScreen.sprPlayer.PrevPosition;
+                        currentGameScreen.Player.Position = currentGameScreen.Player.PrevPosition;
                     }
                 }
             }

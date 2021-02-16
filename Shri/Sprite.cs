@@ -185,7 +185,7 @@ namespace Shri
             }
         }
 
-        public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0)
+        public Sprite(Texture2D texture, Vector2 position, Color tint, Vector2 origin, bool isPlayerControlled = false, int speed = 50, float momentum = 0f, int mvmtDirection = 0, Vector2? scale = null)
         {
             _position = new Vector2(position.X, position.Y);
             _texture = texture;
@@ -199,6 +199,8 @@ namespace Shri
             _mvmtDirection = mvmtDirection;
             _scale = new Vector2(1.0f, 1.0f);
             _bounds = new Rectangle((int)_position.X - (int)Origin.X, (int)_position.Y - (int)Origin.Y, (int)(_width * _scale.X), (int)(_height * _scale.Y));
+            if (scale != null)
+                _scale = (Vector2)scale;
         }
 
         public void SetTint(Color tint)
@@ -213,7 +215,7 @@ namespace Shri
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, Color.White); //Color.White draws sprite normally (color parameter is color mask), scale isn't necessary so this line freaks out
-        }
+            spriteBatch.Draw(_texture, _position, null, Color.White, 0f, _origin, _scale, SpriteEffects.None, 0f); //Color.White draws sprite normally (color parameter is color mask), scale isn't necessary so this line freaks out
+        }                                               //TODO add local _color field
     }
 }

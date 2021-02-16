@@ -6,16 +6,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shri
+namespace Shri.Managers
 {
+    /// <summary>
+    /// Class used for managing input devices
+    /// </summary>
     public class InputManager
     {
         public Dictionary<Keys, Input> KeyBindingsKeyboard;
         public Dictionary<Buttons, Input> KeyBindingsGamePad;
-
-        private bool isUsingKeyboard;
-
         private int playerInput;
+
+        private bool _isUsingKBM;
+        public bool IsUsingKBM
+        {
+            get
+            {
+                return _isUsingKBM;
+            }
+        }
+
+        public KeyboardState KeyboardState
+        {
+            get
+            {
+                return Keyboard.GetState();
+            }
+        }
+
+        public Keys[] PressedKeys
+        {
+            get
+            {
+                return KeyboardState.GetPressedKeys();
+            }
+        }
+
+        public bool AreKeysPressed
+        {
+            get
+            {
+                return PressedKeys.Length > 0;
+            }
+        }
+
+        protected MouseState _mouseState;
+        public MouseState MouseState
+        {
+            get
+            {
+                return Mouse.GetState();
+            }
+        }
+
         GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
 
         public InputManager()
@@ -56,19 +99,19 @@ namespace Shri
 
             if (gamePadState.IsConnected == true) //TODO possibly add menu option to specifically select controller or keyboard
             {
-                isUsingKeyboard = false; //TODO update this so that InputManager's isUsingKeyboard value is configurable
+                _isUsingKBM = false; //TODO add user menu option to configure _isUsingKBM value
             }
             else
             {
-                isUsingKeyboard = true;
+                _isUsingKBM = true;
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             playerInput = 0;
 
-            if (isUsingKeyboard)
+            if (_isUsingKBM)
             {
                 Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
@@ -107,7 +150,7 @@ namespace Shri
         public bool Pressed(params Input[] inputs)
         {
             int total = 0;
-            
+
             foreach (var input in inputs)
             {
                 total |= (int)input;
