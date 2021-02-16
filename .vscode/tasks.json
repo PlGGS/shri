@@ -2,7 +2,19 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "clean",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-f",
+                "Client"
+            ]
+        },
+        {
             "label": "build",
+            "dependsOn": [
+                "clean"
+            ],
             "command": "dotnet",
             "type": "process",
             "args": [

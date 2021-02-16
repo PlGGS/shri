@@ -27,4 +27,11 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
   </ItemGroup>
+  <!-- Actually cleans your project when you run "dotnet clean" -->
+  <Target Name="SpicNSpan"  AfterTargets="Clean">
+    <!-- Remove obj folder -->
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+    <!-- Remove bin folder -->
+    <RemoveDir Directories="$(BaseOutputPath)" />
+</Target>
 </Project>
