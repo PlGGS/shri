@@ -7,7 +7,6 @@ namespace Shri
         [STAThread]
         static void Main()
         {
-            // using (var game = new Shri())
             Shri.Instance.Run();
         }
     }

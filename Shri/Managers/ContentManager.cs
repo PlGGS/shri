@@ -43,7 +43,7 @@ namespace Shri
         /// </summary>
         /// <param name="fullPath"></param>
         /// <returns></returns>
-        public Texture2D GetTexture(string filePath, GraphicsDevice graphicsDevice) //No need to check multiple folders, as all of our texture files should be in Content/Images
+        public Texture2D GetTexture(string filePath, GraphicsDevice graphicsDevice) //No need to check multiple folders, as all of our texture files should be in Shri/Content/Images
         {
             Texture2D texture = null;
 

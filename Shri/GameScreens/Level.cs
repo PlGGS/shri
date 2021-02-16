@@ -43,15 +43,15 @@ namespace Shri
 
         public override void LoadContent(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
-            txrPlayerBlue = contentManager.GetTexture("Content/Images/budBlue.png", graphicsDevice);
-            txrPlayerYellow = contentManager.GetTexture("Content/Images/budYellow.png", graphicsDevice);
-            txrPlayerRed = contentManager.GetTexture("Content/Images/budRed.png", graphicsDevice);
-            txrBlack = contentManager.GetTexture("Content/Images/black.png", graphicsDevice);
-            txrWhite = contentManager.GetTexture("Content/Images/white.png", graphicsDevice);
-            txrFillBlue = contentManager.GetTexture("Content/Images/fillBlue.png", graphicsDevice);
-            txrFillYellow = contentManager.GetTexture("Content/Images/fillYellow.png", graphicsDevice);
-            txrFillRed = contentManager.GetTexture("Content/Images/fillRed.png", graphicsDevice);
-            txrFilled = contentManager.GetTexture("Content/Images/filled.png", graphicsDevice); //TODO change the way fill textures are loaded
+            txrPlayerBlue = contentManager.GetTexture("Shri/Content/Images/budBlue.png", graphicsDevice);
+            txrPlayerYellow = contentManager.GetTexture("Shri/Content/Images/budYellow.png", graphicsDevice);
+            txrPlayerRed = contentManager.GetTexture("Shri/Content/Images/budRed.png", graphicsDevice);
+            txrBlack = contentManager.GetTexture("Shri/Content/Images/black.png", graphicsDevice);
+            txrWhite = contentManager.GetTexture("Shri/Content/Images/white.png", graphicsDevice);
+            txrFillBlue = contentManager.GetTexture("Shri/Content/Images/fillBlue.png", graphicsDevice);
+            txrFillYellow = contentManager.GetTexture("Shri/Content/Images/fillYellow.png", graphicsDevice);
+            txrFillRed = contentManager.GetTexture("Shri/Content/Images/fillRed.png", graphicsDevice);
+            txrFilled = contentManager.GetTexture("Shri/Content/Images/filled.png", graphicsDevice); //TODO change the way fill textures are loaded
 
             if (Shri.Instance.GameScreenManager.CurrentGameScreen is Level0)
             {
@@ -106,9 +106,9 @@ namespace Shri
             _walls.Add(sprWallTop);
             _walls.Add(sprWallBottom);
 
-            txrMediumFont = contentManager.GetTexture("Content/Fonts/medium-font.png", graphicsDevice);
+            txrMediumFont = contentManager.GetTexture("Shri/Content/Fonts/medium-font.png", graphicsDevice);
             sprMediumFont = new FramedSprite(18, 4, 0, txrMediumFont, Vector2.Zero, Color.White, false);
-            Dictionary<int, int> mapping = contentManager.GetFontMapping("Content/Fonts/medium-font.fontmapping");
+            Dictionary<int, int> mapping = contentManager.GetFontMapping("Shri/Content/Fonts/medium-font.fontmapping");
             fntMediumFont = new Font(sprMediumFont, mapping, 1, 2, Color.Black);
         }
 

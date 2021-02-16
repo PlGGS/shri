@@ -29,7 +29,7 @@ namespace Shri
         {
             base.LoadContent(contentManager, graphicsDevice);
 
-            txrTitle = contentManager.GetTexture("Content/Images/mainMenu.png", graphicsDevice);
+            txrTitle = contentManager.GetTexture("Shri/Content/Images/mainMenu.png", graphicsDevice);
             sprTitle = new SprTitle(txrTitle, Vector2.Zero, Color.White, Vector2.Zero, true, 0, 1.0f);
             Shri.Instance.SoundManager.PlaySound("Music");
         }

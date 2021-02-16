@@ -74,12 +74,12 @@ namespace Shri
             _contentManager = new ContentManager();
             _soundManager = new SoundManager(new List<SoundFX>
             {
-                new SoundFX {Key = "Fill", FileName = "Content/Audio/fill.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
-                new SoundFX {Key = "NoFill", FileName = "Content/Audio/noFill.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
-                new SoundFX {Key = "Open", FileName = "Content/Audio/open.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
-                new SoundFX {Key = "Close", FileName = "Content/Audio/close.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
-                new SoundFX {Key = "Music", FileName = "Content/Audio/music.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
-                new SoundFX {Key = "TempWin", FileName = "Content/Audio/tempWin.wav", DefaultPitch = 0.01f, DefaultVolume = 1}
+                new SoundFX {Key = "Fill", FileName = "Shri/Content/Audio/fill.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
+                new SoundFX {Key = "NoFill", FileName = "Shri/Content/Audio/noFill.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
+                new SoundFX {Key = "Open", FileName = "Shri/Content/Audio/open.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
+                new SoundFX {Key = "Close", FileName = "Shri/Content/Audio/close.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
+                new SoundFX {Key = "Music", FileName = "Shri/Content/Audio/music.wav", DefaultPitch = 0.01f, DefaultVolume = 1},
+                new SoundFX {Key = "TempWin", FileName = "Shri/Content/Audio/tempWin.wav", DefaultPitch = 0.01f, DefaultVolume = 1}
             }, 1);
         }
 
