@@ -25,7 +25,6 @@ namespace Shri
         }
         
         GraphicsDeviceManager _graphics;
-        GraphicsDevice _graphicsDevice;
         SpriteBatch spriteBatch;
 
         GameScreenManager _gameScreenManager;

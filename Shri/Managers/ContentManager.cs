@@ -96,7 +96,7 @@ namespace Shri
         {
             SoundEffect sfx = null;
 
-            if (File.Exists(filePath)) //.Replace("\\", "/"
+            if (File.Exists(filePath))
             {
                 using (FileStream stream = File.OpenRead(filePath))
                 {
